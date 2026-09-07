@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ABC Collision | Brooklyn's Premier Auto Body & Collision Repair Shop</title>
-    <meta name="description" content="ABC Collision at 1279 Utica Ave, Brooklyn, NY. Full-service collision repair, factory-match paint, frame straightening, and insurance claim advocacy. Call (718) 451-0061.">
+    <meta name="description" content="ABC Collision at 1279 Utica Ave, Brooklyn, NY 11203. Full-service collision repair, factory-match paint, computerized frame straightening, and direct insurance claim billing. Call (718) 451-0061.">
     
-    <!-- Tailwind CSS -->
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -26,7 +26,7 @@
                     },
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
-                        display: ['Outfit', 'sans-serif']
+                        heading: ['Outfit', 'sans-serif']
                     }
                 }
             }
@@ -49,19 +49,18 @@
             font-family: 'Outfit', sans-serif;
         }
         
-        /* Custom UI Enhancements */
         .glass-card {
-            background: rgba(255, 255, 255, 0.92);
+            background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(12px);
             border: 1px solid rgba(226, 232, 240, 0.8);
         }
         
         .shadow-glow {
-            box-shadow: 0 10px 30px -10px rgba(220, 38, 38, 0.25);
+            box-shadow: 0 10px 30px -10px rgba(220, 38, 38, 0.3);
         }
 
         .shadow-soft {
-            box-shadow: 0 20px 40px -15px rgba(15, 23, 42, 0.07);
+            box-shadow: 0 20px 40px -15px rgba(15, 23, 42, 0.08);
         }
         
         .bg-grid-pattern {
@@ -69,32 +68,24 @@
             background-size: 24px 24px;
         }
 
-        /* Before / After Interactive Comparison Slider */
+        /* Interactive Before / After Comparison Slider */
         .ba-container {
             position: relative;
             width: 100%;
-            height: 420px;
+            height: 380px;
             overflow: hidden;
             border-radius: 1rem;
             user-select: none;
+            touch-action: pan-y;
         }
 
         @media (min-width: 768px) {
             .ba-container {
-                height: 500px;
+                height: 480px;
             }
         }
 
-        .ba-image-before {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .ba-image-after {
+        .ba-image-before, .ba-image-after {
             position: absolute;
             top: 0;
             left: 0;
@@ -122,7 +113,7 @@
             cursor: ew-resize;
             transform: translateX(-50%);
             z-index: 20;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 0 12px rgba(0, 0, 0, 0.6);
         }
 
         .ba-handle-button {
@@ -138,13 +129,16 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            box-shadow: 0 4px 16px rgba(0,0,0,0.4);
             border: 3px solid #ffffff;
         }
 
         /* Modal Overlay */
         .modal {
-            transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+            transition: opacity 0.25s ease-in-out, visibility 0.25s ease-in-out;
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
         }
         .modal-active {
             opacity: 1 !important;
@@ -168,23 +162,23 @@
         }
     </style>
 </head>
-<body class="bg-white text-slate-800 antialiased selection:bg-brand-red selection:text-white">
+<body class="bg-white text-slate-800 antialiased selection:bg-brand-red selection:text-white pb-16 lg:pb-0">
 
     <!-- TOP ANNOUNCEMENT BAR -->
     <div class="bg-brand-dark text-white text-xs md:text-sm py-2 px-4 font-medium">
         <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-2 text-center md:text-left">
-            <div class="flex items-center gap-3">
-                <span class="bg-brand-red text-white text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded">Brooklyn, NY</span>
+            <div class="flex flex-wrap justify-center md:justify-start items-center gap-3">
+                <span class="bg-brand-red text-white text-[10px] font-extrabold uppercase tracking-wider px-2 py-0.5 rounded">Brooklyn, NY</span>
                 <span><i class="fa-solid fa-location-dot text-brand-red mr-1.5"></i> 1279 Utica Ave, Brooklyn, NY 11203</span>
-                <span class="hidden lg:inline text-slate-400">|</span>
+                <span class="hidden lg:inline text-slate-600">|</span>
                 <span class="hidden lg:inline"><i class="fa-regular fa-clock text-brand-red mr-1.5"></i> Mon–Fri 8AM–6PM, Sat 9AM–2PM</span>
             </div>
             <div class="flex items-center gap-4">
                 <a href="tel:7184510061" class="hover:text-brand-red transition-colors font-bold text-white flex items-center gap-1.5">
                     <i class="fa-solid fa-phone text-brand-red"></i> (718) 451-0061
                 </a>
-                <span class="text-slate-500">|</span>
-                <span class="text-slate-300 font-semibold"><i class="fa-solid fa-star text-amber-400 mr-1"></i>4.7 (190+ Google Reviews)</span>
+                <span class="text-slate-600">|</span>
+                <span class="text-slate-200 font-semibold"><i class="fa-solid fa-star text-amber-400 mr-1"></i>4.7 (190+ Google Reviews)</span>
             </div>
         </div>
     </div>
@@ -202,19 +196,19 @@
                         <span class="font-heading text-2xl font-black text-brand-dark tracking-tight leading-none group-hover:text-brand-red transition-colors">
                             ABC <span class="text-brand-red">COLLISION</span>
                         </span>
-                        <span class="text-[10px] tracking-widest font-bold text-slate-500 uppercase mt-0.5">
+                        <span class="text-[10px] tracking-widest font-bold text-slate-500 uppercase mt-1">
                             Auto Body & Repair Center
                         </span>
                     </div>
                 </a>
 
                 <!-- Desktop Navigation Links -->
-                <nav class="hidden md:flex items-center gap-8 font-medium text-sm text-slate-700">
+                <nav class="hidden xl:flex items-center gap-7 font-semibold text-sm text-slate-700">
                     <a href="#about" class="hover:text-brand-red transition-colors">About Us</a>
                     <a href="#services" class="hover:text-brand-red transition-colors">Services</a>
                     <a href="#why-us" class="hover:text-brand-red transition-colors">Why Choose Us</a>
                     <a href="#gallery" class="hover:text-brand-red transition-colors">Before & After</a>
-                    <a href="#process" class="hover:text-brand-red transition-colors">Process</a>
+                    <a href="#tracker" class="hover:text-brand-red transition-colors">Track Repair</a>
                     <a href="#insurance" class="hover:text-brand-red transition-colors">Insurance</a>
                     <a href="#reviews" class="hover:text-brand-red transition-colors">Reviews</a>
                     <a href="#contact" class="hover:text-brand-red transition-colors">Contact</a>
@@ -222,83 +216,89 @@
 
                 <!-- Desktop CTAs -->
                 <div class="hidden lg:flex items-center gap-3">
-                    <a href="tel:7184510061" class="px-4 py-2.5 rounded-xl text-slate-800 font-bold border-2 border-slate-200 hover:border-brand-red hover:text-brand-red transition-all flex items-center gap-2 text-sm">
+                    <button onclick="openTrackerModal()" class="px-3.5 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold transition-all text-xs sm:text-sm flex items-center gap-2">
+                        <i class="fa-solid fa-magnifying-glass text-brand-red"></i> Check Status
+                    </button>
+                    <a href="tel:7184510061" class="px-3.5 py-2.5 rounded-xl text-slate-800 font-bold border-2 border-slate-200 hover:border-brand-red hover:text-brand-red transition-all flex items-center gap-2 text-xs sm:text-sm">
                         <i class="fa-solid fa-phone text-brand-red"></i> Call Shop
                     </a>
-                    <button onclick="openEstimateModal()" class="px-5 py-2.5 rounded-xl bg-brand-red hover:bg-brand-redhover text-white font-bold transition-all shadow-glow hover:shadow-lg hover:-translate-y-0.5 text-sm flex items-center gap-2">
-                        <span>Get Free Estimate</span>
+                    <button onclick="openEstimateModal()" class="px-4 py-2.5 rounded-xl bg-brand-red hover:bg-brand-redhover text-white font-extrabold transition-all shadow-glow hover:shadow-lg hover:-translate-y-0.5 text-xs sm:text-sm flex items-center gap-2">
+                        <span>Free Estimate</span>
                         <i class="fa-solid fa-arrow-right text-xs"></i>
                     </button>
                 </div>
 
                 <!-- Mobile Menu Toggle Button -->
-                <button id="mobile-menu-btn" onclick="toggleMobileMenu()" class="md:hidden p-2 text-slate-700 hover:text-brand-red focus:outline-none">
+                <button id="mobile-menu-btn" onclick="toggleMobileMenu()" class="xl:hidden p-2.5 rounded-lg text-slate-700 hover:bg-slate-100 focus:outline-none">
                     <i class="fa-solid fa-bars text-2xl"></i>
                 </button>
             </div>
         </div>
 
         <!-- Mobile Drawer Menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-slate-200 px-4 pt-3 pb-6 space-y-3">
+        <div id="mobile-menu" class="hidden xl:hidden bg-white border-b border-slate-200 px-4 pt-3 pb-6 space-y-3">
             <a href="#about" onclick="toggleMobileMenu()" class="block py-2 text-base font-semibold text-slate-800 hover:text-brand-red border-b border-slate-100">About Us</a>
             <a href="#services" onclick="toggleMobileMenu()" class="block py-2 text-base font-semibold text-slate-800 hover:text-brand-red border-b border-slate-100">Services</a>
             <a href="#why-us" onclick="toggleMobileMenu()" class="block py-2 text-base font-semibold text-slate-800 hover:text-brand-red border-b border-slate-100">Why Choose Us</a>
-            <a href="#gallery" onclick="toggleMobileMenu()" class="block py-2 text-base font-semibold text-slate-800 hover:text-brand-red border-b border-slate-100">Before & After</a>
-            <a href="#process" onclick="toggleMobileMenu()" class="block py-2 text-base font-semibold text-slate-800 hover:text-brand-red border-b border-slate-100">Our Process</a>
-            <a href="#insurance" onclick="toggleMobileMenu()" class="block py-2 text-base font-semibold text-slate-800 hover:text-brand-red border-b border-slate-100">Insurance Info</a>
+            <a href="#gallery" onclick="toggleMobileMenu()" class="block py-2 text-base font-semibold text-slate-800 hover:text-brand-red border-b border-slate-100">Before & After Showcase</a>
+            <a href="#tracker" onclick="toggleMobileMenu()" class="block py-2 text-base font-semibold text-slate-800 hover:text-brand-red border-b border-slate-100">Live Repair Tracker</a>
+            <a href="#insurance" onclick="toggleMobileMenu()" class="block py-2 text-base font-semibold text-slate-800 hover:text-brand-red border-b border-slate-100">Insurance Claims</a>
             <a href="#reviews" onclick="toggleMobileMenu()" class="block py-2 text-base font-semibold text-slate-800 hover:text-brand-red border-b border-slate-100">Customer Reviews</a>
             <a href="#contact" onclick="toggleMobileMenu()" class="block py-2 text-base font-semibold text-slate-800 hover:text-brand-red border-b border-slate-100">Contact Shop</a>
-            <div class="pt-2 flex flex-row items-center gap-2 w-full">
-                <a href="tel:7184510061" class="flex-1 text-center py-3 rounded-xl bg-slate-900 text-white font-bold flex items-center justify-center gap-1.5 text-xs whitespace-nowrap">
-                    <i class="fa-solid fa-phone text-brand-red"></i> Call 718-451-0061
-                </a>
-                <button onclick="openEstimateModal(); toggleMobileMenu();" class="flex-1 text-center py-3 rounded-xl bg-brand-red text-white font-bold text-xs shadow-md whitespace-nowrap">
-                    Get Free Estimate
+            <div class="pt-2 flex flex-col gap-2.5 w-full">
+                <button onclick="openTrackerModal(); toggleMobileMenu();" class="w-full py-3 rounded-xl bg-slate-100 text-slate-800 font-bold flex items-center justify-center gap-2 text-sm">
+                    <i class="fa-solid fa-magnifying-glass text-brand-red"></i> Track Vehicle Repair
                 </button>
+                <div class="flex items-center gap-2">
+                    <a href="tel:7184510061" class="flex-1 text-center py-3 rounded-xl bg-slate-900 text-white font-bold flex items-center justify-center gap-1.5 text-xs">
+                        <i class="fa-solid fa-phone text-brand-red"></i> Call 718-451-0061
+                    </a>
+                    <button onclick="openEstimateModal(); toggleMobileMenu();" class="flex-1 text-center py-3 rounded-xl bg-brand-red text-white font-bold text-xs shadow-md">
+                        Get Free Estimate
+                    </button>
+                </div>
             </div>
         </div>
     </header>
 
     <!-- HERO SECTION -->
-    <section class="relative bg-gradient-to-b from-slate-50 via-white to-slate-100 py-12 md:py-20 overflow-hidden border-b border-slate-200">
-        <!-- Subtle Grid Overlay -->
+    <section class="relative bg-gradient-to-b from-slate-50 via-white to-slate-100 py-12 md:py-16 overflow-hidden border-b border-slate-200">
         <div class="absolute inset-0 bg-grid-pattern opacity-40 pointer-events-none"></div>
 
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="grid lg:grid-cols-12 gap-12 items-center">
+            <div class="grid lg:grid-cols-12 gap-10 lg:gap-12 items-center">
                 
                 <!-- Left Column: Copy & Actions -->
                 <div class="lg:col-span-6 space-y-6 text-center lg:text-left">
-                    
                     <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-red-50 border border-red-200 text-brand-red text-xs font-bold uppercase tracking-wider">
                         <span class="w-2 h-2 rounded-full bg-brand-red animate-ping"></span>
-                        Brooklyn's Premier Auto Body Shop Since 2005
+                        Brooklyn's Auto Body Authority Since 2005
                     </div>
 
                     <h1 class="font-heading text-4xl sm:text-5xl lg:text-6xl font-black text-slate-900 leading-[1.1] tracking-tight">
                         Collision Repair. <br>
                         <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-red to-red-700">
-                            Done Right.
+                            Done Right. Guaranteed.
                         </span>
                     </h1>
 
-                    <p class="text-lg text-slate-600 font-medium leading-relaxed max-w-xl mx-auto lg:mx-0">
-                        Professional Auto Body &amp; Collision Repair You Can Trust. From minor dents and scratches to major accident damage, ABC Collision restores your vehicle with precision, quality craftsmanship, and factory OEM specifications.
+                    <p class="text-base sm:text-lg text-slate-600 font-medium leading-relaxed max-w-xl mx-auto lg:mx-0">
+                        From minor bumper scratches to major collision restoration, ABC Collision delivers factory-spec precision craftsmanship, seamless paint matching, and direct insurance advocacy in Brooklyn.
                     </p>
 
                     <!-- CTAs -->
                     <div class="flex flex-row items-center justify-center lg:justify-start gap-3 pt-2 w-full">
-                        <button onclick="openEstimateModal()" class="flex-1 sm:flex-initial px-4 sm:px-8 py-3.5 sm:py-4 rounded-xl bg-brand-red hover:bg-brand-redhover text-white font-extrabold text-xs sm:text-base transition-all shadow-glow hover:shadow-xl hover:-translate-y-0.5 flex items-center justify-center gap-2 sm:gap-3 whitespace-nowrap">
+                        <button onclick="openEstimateModal()" class="flex-1 sm:flex-initial px-5 sm:px-8 py-3.5 sm:py-4 rounded-xl bg-brand-red hover:bg-brand-redhover text-white font-extrabold text-xs sm:text-base transition-all shadow-glow hover:shadow-xl hover:-translate-y-0.5 flex items-center justify-center gap-2 whitespace-nowrap">
                             <i class="fa-solid fa-calculator"></i>
                             <span>Get Free Estimate</span>
                         </button>
-                        <a href="tel:7184510061" class="flex-1 sm:flex-initial px-4 sm:px-8 py-3.5 sm:py-4 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-extrabold text-xs sm:text-base transition-all shadow-md hover:-translate-y-0.5 flex items-center justify-center gap-2 sm:gap-3 whitespace-nowrap">
+                        <a href="tel:7184510061" class="flex-1 sm:flex-initial px-5 sm:px-8 py-3.5 sm:py-4 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-extrabold text-xs sm:text-base transition-all shadow-md hover:-translate-y-0.5 flex items-center justify-center gap-2 whitespace-nowrap">
                             <i class="fa-solid fa-phone text-brand-red"></i>
-                            <span>Call 718-451-0061</span>
+                            <span>(718) 451-0061</span>
                         </a>
                     </div>
 
-                    <!-- Trust Stats Bar -->
+                    <!-- Trust Indicators Bar -->
                     <div class="pt-6 border-t border-slate-200/80 grid grid-cols-3 gap-4 text-center lg:text-left">
                         <div>
                             <div class="font-heading text-2xl md:text-3xl font-extrabold text-slate-900">4.7 <i class="fa-solid fa-star text-amber-400 text-lg"></i></div>
@@ -319,22 +319,28 @@
                 <!-- Right Column: Interactive Before/After Visual Slider -->
                 <div class="lg:col-span-6">
                     <div class="bg-white p-3 md:p-4 rounded-2xl shadow-soft border border-slate-200 relative">
-                        <!-- Badge Overlay -->
-                        <div class="absolute top-6 left-6 z-30 bg-slate-900/90 backdrop-blur-md text-white text-xs font-bold px-3 py-1.5 rounded-lg shadow-md border border-slate-700 flex items-center gap-2 pointer-events-none">
-                            <i class="fa-solid fa-sliders text-brand-red"></i>
-                            Drag Slider to Compare
+                        <!-- Case Switcher Controls -->
+                        <div class="flex items-center justify-between mb-3 px-1">
+                            <div class="text-xs font-bold uppercase tracking-wider text-slate-500 flex items-center gap-1.5">
+                                <i class="fa-solid fa-sliders text-brand-red"></i> Interactive Before / After
+                            </div>
+                            <div class="flex items-center gap-1.5">
+                                <button onclick="switchHeroCase('sedan')" id="btn-case-sedan" class="case-btn px-2.5 py-1 text-xs font-bold rounded-lg bg-brand-red text-white transition-all">Sedan</button>
+                                <button onclick="switchHeroCase('suv')" id="btn-case-suv" class="case-btn px-2.5 py-1 text-xs font-bold rounded-lg bg-slate-100 text-slate-600 hover:bg-slate-200 transition-all">SUV Quarter</button>
+                                <button onclick="switchHeroCase('paint')" id="btn-case-paint" class="case-btn px-2.5 py-1 text-xs font-bold rounded-lg bg-slate-100 text-slate-600 hover:bg-slate-200 transition-all">Paint Repair</button>
+                            </div>
                         </div>
 
-                        <!-- Before & After Canvas Element -->
+                        <!-- Before & After Canvas Slider Container -->
                         <div class="ba-container shadow-inner" id="hero-ba-slider">
-                            <!-- After Image (Clean Restored Luxury Vehicle) -->
-                            <img src="https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=1200&q=80" alt="Restored Luxury Vehicle ABC Collision" class="ba-image-after">
-                            <span class="absolute bottom-4 right-4 bg-emerald-600 text-white font-bold text-xs uppercase px-3 py-1 rounded-md shadow z-10">After: Factory Restored</span>
+                            <!-- After Image -->
+                            <img id="hero-img-after" src="https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=1200&q=80" alt="Restored Luxury Vehicle ABC Collision" class="ba-image-after">
+                            <span class="absolute bottom-4 right-4 bg-emerald-600 text-white font-bold text-[11px] uppercase px-3 py-1 rounded-md shadow z-10">After: Restored OEM</span>
 
-                            <!-- Before Image Clip Wrapper (Damaged Car) -->
+                            <!-- Before Image Wrapper -->
                             <div class="ba-resize" id="hero-ba-resize">
-                                <img src="https://images.unsplash.com/photo-1599256621730-535171e28e50?auto=format&fit=crop&w=1200&q=80" alt="Damaged Car Before Collision Repair" class="ba-image-before">
-                                <span class="absolute bottom-4 left-4 bg-brand-red text-white font-bold text-xs uppercase px-3 py-1 rounded-md shadow z-10">Before: Collision Damage</span>
+                                <img id="hero-img-before" src="https://images.unsplash.com/photo-1599256621730-535171e28e50?auto=format&fit=crop&w=1200&q=80" alt="Damaged Car Before Collision Repair" class="ba-image-before">
+                                <span class="absolute bottom-4 left-4 bg-brand-red text-white font-bold text-[11px] uppercase px-3 py-1 rounded-md shadow z-10">Before: Crash Damage</span>
                             </div>
 
                             <!-- Slider Handle -->
@@ -345,10 +351,10 @@
                             </div>
                         </div>
 
-                        <div class="mt-3 flex items-center justify-between px-2 text-xs font-semibold text-slate-500">
-                            <span><i class="fa-solid fa-check-circle text-emerald-500 mr-1"></i> Factory Color Matching</span>
-                            <span><i class="fa-solid fa-check-circle text-emerald-500 mr-1"></i> OEM Frame Straightening</span>
-                            <span><i class="fa-solid fa-check-circle text-emerald-500 mr-1"></i> Seamless Panel Blending</span>
+                        <div class="mt-3 flex flex-wrap items-center justify-between px-2 text-[11px] font-semibold text-slate-500 gap-2">
+                            <span><i class="fa-solid fa-circle-check text-emerald-500 mr-1"></i> Computerized Color Match</span>
+                            <span><i class="fa-solid fa-circle-check text-emerald-500 mr-1"></i> Laser Frame Realignment</span>
+                            <span><i class="fa-solid fa-circle-check text-emerald-500 mr-1"></i> Seamless Panel Blending</span>
                         </div>
                     </div>
                 </div>
@@ -357,33 +363,33 @@
         </div>
     </section>
 
-    <!-- INTERACTIVE QUICK ESTIMATE CALCULATOR WIDGET -->
-    <section class="py-8 bg-brand-dark text-white relative z-20 shadow-xl">
+    <!-- INTERACTIVE ESTIMATE CALCULATOR BAR -->
+    <section class="py-8 bg-brand-dark text-white relative z-20 shadow-xl border-t border-slate-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col lg:flex-row items-center justify-between gap-6">
                 
-                <div class="flex items-center gap-4 text-left">
-                    <div class="w-14 h-14 rounded-2xl bg-brand-red/20 border border-brand-red/40 flex items-center justify-center text-brand-red text-2xl shrink-0">
+                <div class="flex items-center gap-4 text-center sm:text-left">
+                    <div class="w-12 h-12 rounded-2xl bg-brand-red/20 border border-brand-red/40 flex items-center justify-center text-brand-red text-2xl shrink-0 mx-auto sm:mx-0">
                         <i class="fa-solid fa-calculator"></i>
                     </div>
                     <div>
-                        <h3 class="font-heading text-xl font-bold text-white">Need a Fast Estimate?</h3>
-                        <p class="text-sm text-slate-300">Select damage type to get instant service guidance from our experts</p>
+                        <h3 class="font-heading text-xl font-bold text-white">Need a Quick Repair Cost Range?</h3>
+                        <p class="text-xs sm:text-sm text-slate-300">Select damage type to calculate estimated turnaround and repair budget</p>
                     </div>
                 </div>
 
-                <!-- Quick Selection Controls -->
-                <div class="w-full lg:w-auto flex flex-row items-center gap-3">
-                    <select id="quick-damage-type" class="flex-1 sm:flex-none bg-slate-800 text-white border border-slate-700 text-xs sm:text-sm rounded-xl px-3 sm:px-4 py-3 focus:outline-none focus:ring-2 focus:ring-brand-red font-medium">
-                        <option value="collision">Major Collision / Accident</option>
-                        <option value="bumper">Bumper &amp; Fender Scuff</option>
-                        <option value="dent">Dent &amp; Scratch Removal</option>
-                        <option value="paint">Full Body Repaint / Touchup</option>
-                        <option value="frame">Frame &amp; Structural Realignment</option>
+                <!-- Controls -->
+                <div class="w-full lg:w-auto flex flex-col sm:flex-row items-center gap-3">
+                    <select id="quick-damage-type" class="w-full sm:w-auto bg-slate-800 text-white border border-slate-700 text-xs sm:text-sm rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-brand-red font-medium">
+                        <option value="collision">Major Collision / Crash Damage</option>
+                        <option value="bumper">Bumper Crack / Scuff Replacement</option>
+                        <option value="dent">Door Dent & Scratch Repair</option>
+                        <option value="paint">Full Body / Panel Painting</option>
+                        <option value="frame">Frame & Chassis Alignment</option>
                     </select>
 
-                    <button onclick="handleQuickEstimate()" class="flex-1 sm:flex-none px-4 sm:px-6 py-3 bg-brand-red hover:bg-brand-redhover text-white font-bold rounded-xl text-xs sm:text-sm transition-all shadow-md shrink-0 whitespace-nowrap flex items-center justify-center gap-1.5">
-                        <span>Start Free Estimate</span>
+                    <button onclick="calculateQuickEstimate()" class="w-full sm:w-auto px-6 py-3 bg-brand-red hover:bg-brand-redhover text-white font-bold rounded-xl text-xs sm:text-sm transition-all shadow-md shrink-0 whitespace-nowrap flex items-center justify-center gap-2">
+                        <span>Calculate Range</span>
                         <i class="fa-solid fa-arrow-right"></i>
                     </button>
                 </div>
@@ -392,7 +398,85 @@
         </div>
     </section>
 
-    <!-- ABOUT ABC COLLISION -->
+    <!-- REPAIR TRACKER SEARCH BAR SECTION -->
+    <section id="tracker" class="py-12 bg-slate-50 border-b border-slate-200">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-white rounded-2xl border border-slate-200 p-6 md:p-8 shadow-soft">
+                <div class="text-center max-w-2xl mx-auto mb-6">
+                    <span class="text-brand-red font-extrabold text-xs uppercase tracking-widest"><i class="fa-solid fa-satellite-dish mr-1"></i> Live Customer Portal</span>
+                    <h2 class="font-heading text-2xl sm:text-3xl font-extrabold text-slate-900 mt-1">Track Your Vehicle Repair Status</h2>
+                    <p class="text-xs sm:text-sm text-slate-600 mt-1">Already have your vehicle at ABC Collision? Enter your Claim/Tag ID to view live progress updates.</p>
+                </div>
+
+                <div class="flex flex-col sm:flex-row gap-3 max-w-xl mx-auto">
+                    <input type="text" id="tracker-search-input" placeholder="Enter Tag or Phone # (e.g. ABC-8821)" class="flex-1 bg-slate-50 border border-slate-300 text-slate-900 text-sm rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-brand-red font-semibold">
+                    <button onclick="runTrackerSearch()" class="px-6 py-3 bg-slate-900 hover:bg-slate-800 text-white font-bold rounded-xl text-sm transition-all flex items-center justify-center gap-2 shadow-sm">
+                        <i class="fa-solid fa-magnifying-glass text-brand-red"></i>
+                        <span>Search Status</span>
+                    </button>
+                </div>
+
+                <div class="mt-4 text-center">
+                    <span class="text-xs text-slate-500 font-medium">Demo Tag IDs: </span>
+                    <button onclick="loadSampleTracker('ABC-8821')" class="text-xs text-brand-red font-bold hover:underline mx-1">ABC-8821 (Paint Phase)</button> | 
+                    <button onclick="loadSampleTracker('ABC-4029')" class="text-xs text-brand-red font-bold hover:underline mx-1">ABC-4029 (Final Inspection)</button>
+                </div>
+
+                <!-- Tracker Result Container (Initially Hidden) -->
+                <div id="tracker-result-box" class="hidden mt-8 pt-8 border-t border-slate-200">
+                    <div class="flex flex-col md:flex-row items-start md:items-center justify-between pb-4 mb-6 border-b border-slate-100 gap-4">
+                        <div>
+                            <span id="tracker-badge" class="bg-amber-100 text-amber-800 text-xs font-bold px-3 py-1 rounded-full uppercase">In Progress</span>
+                            <h3 id="tracker-vehicle-name" class="font-heading text-xl font-bold text-slate-900 mt-2">2022 BMW 330i xDrive</h3>
+                            <p id="tracker-claim-num" class="text-xs text-slate-500">Claim ID: ABC-8821 • Insurance: GEICO</p>
+                        </div>
+                        <div class="text-left md:text-right">
+                            <span class="text-xs font-semibold text-slate-500 block">Est. Completion Date</span>
+                            <span id="tracker-est-date" class="text-sm font-extrabold text-brand-red">Friday, Sept 11, 2026</span>
+                        </div>
+                    </div>
+
+                    <!-- Visual Stepper Bar -->
+                    <div class="relative py-2">
+                        <div class="overflow-hidden h-2 mb-6 text-xs flex rounded bg-slate-200">
+                            <div id="tracker-progress-bar" style="width: 60%" class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-brand-red transition-all duration-500"></div>
+                        </div>
+
+                        <div class="grid grid-cols-2 sm:grid-cols-5 gap-2 text-center text-xs">
+                            <div class="space-y-1">
+                                <div class="w-8 h-8 mx-auto rounded-full bg-emerald-600 text-white flex items-center justify-center font-bold"><i class="fa-solid fa-check"></i></div>
+                                <span class="font-bold text-slate-800 block">1. Intake</span>
+                                <span class="text-[10px] text-slate-500">Completed</span>
+                            </div>
+                            <div class="space-y-1">
+                                <div class="w-8 h-8 mx-auto rounded-full bg-emerald-600 text-white flex items-center justify-center font-bold"><i class="fa-solid fa-check"></i></div>
+                                <span class="font-bold text-slate-800 block">2. Frame & Body</span>
+                                <span class="text-[10px] text-slate-500">Completed</span>
+                            </div>
+                            <div class="space-y-1">
+                                <div id="step-3-circle" class="w-8 h-8 mx-auto rounded-full bg-brand-red text-white flex items-center justify-center font-bold animate-pulse"><i class="fa-solid fa-spray-can"></i></div>
+                                <span class="font-bold text-brand-red block">3. Paint Booth</span>
+                                <span class="text-[10px] text-brand-red font-semibold">Active Stage</span>
+                            </div>
+                            <div class="space-y-1 opacity-50">
+                                <div class="w-8 h-8 mx-auto rounded-full bg-slate-200 text-slate-600 flex items-center justify-center font-bold">4</div>
+                                <span class="font-medium text-slate-700 block">4. Reassembly</span>
+                                <span class="text-[10px] text-slate-500">Pending</span>
+                            </div>
+                            <div class="space-y-1 opacity-50">
+                                <div class="w-8 h-8 mx-auto rounded-full bg-slate-200 text-slate-600 flex items-center justify-center font-bold">5</div>
+                                <span class="font-medium text-slate-700 block">5. Quality Check</span>
+                                <span class="text-[10px] text-slate-500">Pending</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
     <section id="about" class="py-20 bg-white border-b border-slate-200">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid lg:grid-cols-12 gap-12 items-center">
@@ -401,81 +485,71 @@
                 <div class="lg:col-span-5 relative">
                     <div class="relative rounded-2xl overflow-hidden shadow-soft border border-slate-200">
                         <img src="https://images.unsplash.com/photo-1580273916550-e323be2ae537?auto=format&fit=crop&w=900&q=80" alt="ABC Collision Shop Facility Brooklyn" class="w-full h-[420px] object-cover">
-                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent flex flex-col justify-end p-6 text-white">
-                            <span class="font-heading text-lg font-bold text-brand-red">1279 Utica Ave, Brooklyn, NY</span>
-                            <p class="text-xs text-slate-300">Family-owned and operated auto repair facility equipped with laser frame aligners &amp; downdraft heated spray booths.</p>
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/85 via-slate-900/20 to-transparent flex flex-col justify-end p-6 text-white">
+                            <span class="font-heading text-lg font-bold text-brand-red">1279 Utica Ave, Brooklyn, NY 11203</span>
+                            <p class="text-xs text-slate-300">Equipped with state-of-the-art Car-O-Liner laser measuring systems and climate-controlled Garmat downdraft spray booths.</p>
                         </div>
                     </div>
 
                     <!-- Floating Badge -->
-                    <div class="absolute -bottom-6 -right-6 bg-white border border-slate-200 p-4 rounded-2xl shadow-xl hidden sm:flex items-center gap-4 max-w-xs">
-                        <div class="w-12 h-12 bg-red-100 rounded-xl flex items-center justify-center text-brand-red font-bold text-xl shrink-0">
-                            <i class="fa-solid fa-shield-halved"></i>
+                    <div class="absolute -bottom-6 -right-6 bg-white border border-slate-200 p-4 rounded-2xl shadow-xl hidden sm:flex items-center gap-4 max-w-xs z-10">
+                        <div class="w-12 h-12 bg-red-100 rounded-xl flex items-center justify-center text-brand-red text-xl font-bold shrink-0">
+                            <i class="fa-solid fa-award"></i>
                         </div>
                         <div>
-                            <div class="font-bold text-slate-900 text-sm">All Insurance Accepted</div>
-                            <div class="text-xs text-slate-500">We handle paperwork &amp; fight adjusters for you</div>
+                            <h4 class="font-heading font-extrabold text-slate-900 text-sm">I-CAR Gold Class</h4>
+                            <p class="text-xs text-slate-500">Highest industry certification for collision repair precision.</p>
                         </div>
                     </div>
                 </div>
 
-                <!-- Right Content -->
+                <!-- Right Copy -->
                 <div class="lg:col-span-7 space-y-6">
-                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-100 text-slate-700 text-xs font-bold uppercase tracking-wider">
-                        <i class="fa-solid fa-building text-brand-red"></i> About ABC Collision
+                    <div class="inline-flex items-center gap-2 text-brand-red font-extrabold text-xs uppercase tracking-widest">
+                        <i class="fa-solid fa-shield-halved"></i> Brooklyn's Trusted Auto Body Experts
                     </div>
 
-                    <h2 class="font-heading text-3xl sm:text-4xl font-extrabold text-slate-900 leading-tight">
-                        Brooklyn’s Trusted Body Shop for Everyday Drivers to High-End Exotics
+                    <h2 class="font-heading text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+                        Restoring Your Vehicle & Your Peace of Mind
                     </h2>
 
-                    <p class="text-slate-600 font-normal leading-relaxed">
-                        At <strong class="text-slate-900">ABC Collision</strong>, located at 1279 Utica Ave in Brooklyn, we believe auto body repair should be straightforward, flawless, and stress-free. Managed by Steve, Howie, and Ali, our family-run repair center treats every customer like family.
+                    <p class="text-base text-slate-600 leading-relaxed">
+                        At ABC Collision, we understand how stressful a vehicle accident can be. Located on Utica Avenue in Brooklyn, our family-owned facility has provided seamless collision restoration, precision painting, and complete insurance claim advocacy for nearly two decades.
                     </p>
 
-                    <p class="text-slate-600 font-normal leading-relaxed">
-                        Whether you drive a daily commuter Honda, an everyday SUV, or a luxury exotic like a Lamborghini Urus, Mercedes G-Wagon, or Rolls-Royce, we deliver factory OEM restoration standards. We use computerized frame measuring, PPG &amp; Glasurit paint blending, and thorough quality inspections before you take the keys.
+                    <p class="text-base text-slate-600 leading-relaxed">
+                        We don't cut corners. From foreign sports cars and luxury SUVs to domestic work trucks, our technicians utilize OEM factory guidelines, original manufacturer parts, and advanced computerized frame alignment equipment to guarantee your vehicle is returned to pre-accident condition.
                     </p>
 
-                    <!-- Key Bullet Points -->
+                    <!-- Key Pillars -->
                     <div class="grid sm:grid-cols-2 gap-4 pt-2">
-                        <div class="flex items-start gap-3 p-3 rounded-xl bg-slate-50 border border-slate-100">
-                            <i class="fa-solid fa-circle-check text-brand-red text-lg mt-0.5"></i>
+                        <div class="p-4 rounded-xl bg-slate-50 border border-slate-200/80 flex items-start gap-3">
+                            <div class="w-8 h-8 rounded-lg bg-red-100 text-brand-red flex items-center justify-center font-bold shrink-0 mt-0.5">
+                                <i class="fa-solid fa-file-signature text-sm"></i>
+                            </div>
                             <div>
-                                <h4 class="font-bold text-slate-900 text-sm">Honest &amp; Upfront Pricing</h4>
-                                <p class="text-xs text-slate-500">No surprise fees or unnecessary add-ons. Ever.</p>
+                                <h4 class="font-bold text-slate-900 text-sm">Direct Insurance Claims</h4>
+                                <p class="text-xs text-slate-500 mt-0.5">We handle adjusters, paperwork, and direct billing so you pay zero out-of-pocket hassle.</p>
                             </div>
                         </div>
-                        <div class="flex items-start gap-3 p-3 rounded-xl bg-slate-50 border border-slate-100">
-                            <i class="fa-solid fa-circle-check text-brand-red text-lg mt-0.5"></i>
-                            <div>
-                                <h4 class="font-bold text-slate-900 text-sm">Insurance Advocacy</h4>
-                                <p class="text-xs text-slate-500">We deal directly with claims adjusters so you get full coverage.</p>
+
+                        <div class="p-4 rounded-xl bg-slate-50 border border-slate-200/80 flex items-start gap-3">
+                            <div class="w-8 h-8 rounded-lg bg-red-100 text-brand-red flex items-center justify-center font-bold shrink-0 mt-0.5">
+                                <i class="fa-solid fa-infinity text-sm"></i>
                             </div>
-                        </div>
-                        <div class="flex items-start gap-3 p-3 rounded-xl bg-slate-50 border border-slate-100">
-                            <i class="fa-solid fa-circle-check text-brand-red text-lg mt-0.5"></i>
                             <div>
-                                <h4 class="font-bold text-slate-900 text-sm">Factory Color Blending</h4>
-                                <p class="text-xs text-slate-500">State-of-the-art paint booth matching metallic &amp; custom finishes.</p>
-                            </div>
-                        </div>
-                        <div class="flex items-start gap-3 p-3 rounded-xl bg-slate-50 border border-slate-100">
-                            <i class="fa-solid fa-circle-check text-brand-red text-lg mt-0.5"></i>
-                            <div>
-                                <h4 class="font-bold text-slate-900 text-sm">Fast Turnaround Time</h4>
-                                <p class="text-xs text-slate-500">Parts ordered, painted, and installed in days—not weeks.</p>
+                                <h4 class="font-bold text-slate-900 text-sm">Lifetime Warranty</h4>
+                                <p class="text-xs text-slate-500 mt-0.5">All structural repairs and paint finishes are backed by our written lifetime warranty.</p>
                             </div>
                         </div>
                     </div>
 
-                    <div class="pt-4 flex flex-row items-center gap-3 sm:gap-4">
-                        <button onclick="openEstimateModal()" class="px-4 sm:px-6 py-3 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs sm:text-sm transition-all shadow-md whitespace-nowrap">
-                            Schedule Free Inspection
+                    <div class="pt-2 flex items-center gap-4">
+                        <button onclick="openEstimateModal()" class="px-6 py-3 rounded-xl bg-brand-red hover:bg-brand-redhover text-white font-extrabold text-sm shadow-md transition-all">
+                            Request Free Estimate
                         </button>
-                        <a href="tel:7184510061" class="text-brand-red font-bold text-xs sm:text-sm hover:underline flex items-center gap-1.5 whitespace-nowrap">
-                            <span>Speak with Steve or Ali</span>
-                            <i class="fa-solid fa-arrow-right text-xs"></i>
+                        <a href="tel:7184510061" class="text-sm font-extrabold text-slate-900 hover:text-brand-red transition-colors flex items-center gap-2">
+                            <i class="fa-solid fa-phone text-brand-red"></i> Speak With an Estimator
                         </a>
                     </div>
                 </div>
@@ -487,147 +561,142 @@
     <!-- SERVICES SECTION -->
     <section id="services" class="py-20 bg-slate-50 border-b border-slate-200">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            
-            <div class="text-center max-w-3xl mx-auto space-y-4 mb-16">
-                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-100 text-brand-red text-xs font-bold uppercase tracking-wider">
-                    Full-Service Auto Body Care
-                </div>
-                <h2 class="font-heading text-3xl sm:text-4xl font-extrabold text-slate-900">
-                    Comprehensive Collision Repair Services
+            <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
+                <span class="text-brand-red font-extrabold text-xs uppercase tracking-widest">Full Service Collision Center</span>
+                <h2 class="font-heading text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+                    Comprehensive Auto Body & Repair Solutions
                 </h2>
-                <p class="text-slate-600 font-medium">
-                    Every dent, every scratch, and every insurance headache resolved under one roof by certified specialists.
+                <p class="text-slate-600 text-base">
+                    Every repair at ABC Collision is executed by master technicians following factory technical specifications.
                 </p>
             </div>
 
-            <!-- 8 Service Cards Grid -->
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <!-- Service Cards Grid -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 
-                <!-- Service 1 -->
-                <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between group">
-                    <div class="space-y-4">
-                        <div class="w-14 h-14 rounded-2xl bg-red-50 text-brand-red group-hover:bg-brand-red group-hover:text-white transition-colors flex items-center justify-center text-2xl font-bold">
+                <!-- Card 1 -->
+                <div class="bg-white p-8 rounded-2xl border border-slate-200 shadow-soft hover:shadow-xl transition-all duration-300 group flex flex-col justify-between">
+                    <div>
+                        <div class="w-14 h-14 bg-red-50 group-hover:bg-brand-red text-brand-red group-hover:text-white rounded-2xl flex items-center justify-center text-2xl transition-colors duration-300 mb-6">
                             <i class="fa-solid fa-car-burst"></i>
                         </div>
-                        <h3 class="font-heading text-xl font-bold text-slate-900 group-hover:text-brand-red transition-colors">Collision Repair</h3>
-                        <p class="text-slate-600 text-sm leading-relaxed">
-                            Front-end, rear-end, and side impact restorations. Complete structural rebuilding and factory finish alignment.
+                        <h3 class="font-heading text-xl font-bold text-slate-900 mb-3">Collision & Crash Repair</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-6">
+                            Complete structural bodywork, panel replacement, unibody restoration, and suspension alignment following severe traffic accidents.
                         </p>
+                        <ul class="space-y-2 text-xs font-semibold text-slate-700 mb-6">
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-red"></i> Genuine OEM Parts Replacement</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-red"></i> Safety Sensor & ADAS Calibration</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-red"></i> Airbag & Structural Safety Checks</li>
+                        </ul>
                     </div>
-                    <button onclick="openServiceModal('Collision Repair')" class="mt-6 text-brand-red font-bold text-xs uppercase tracking-wider flex items-center gap-1 group-hover:translate-x-1 transition-transform">
-                        Request Quote <i class="fa-solid fa-arrow-right"></i>
+                    <button onclick="openServiceDetail('collision')" class="w-full py-2.5 rounded-xl border border-slate-200 group-hover:border-brand-red group-hover:text-brand-red text-slate-700 text-xs font-bold transition-all">
+                        View Collision Details <i class="fa-solid fa-arrow-right ml-1"></i>
                     </button>
                 </div>
 
-                <!-- Service 2 -->
-                <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between group">
-                    <div class="space-y-4">
-                        <div class="w-14 h-14 rounded-2xl bg-red-50 text-brand-red group-hover:bg-brand-red group-hover:text-white transition-colors flex items-center justify-center text-2xl font-bold">
+                <!-- Card 2 -->
+                <div class="bg-white p-8 rounded-2xl border border-slate-200 shadow-soft hover:shadow-xl transition-all duration-300 group flex flex-col justify-between">
+                    <div>
+                        <div class="w-14 h-14 bg-red-50 group-hover:bg-brand-red text-brand-red group-hover:text-white rounded-2xl flex items-center justify-center text-2xl transition-colors duration-300 mb-6">
                             <i class="fa-solid fa-spray-can"></i>
                         </div>
-                        <h3 class="font-heading text-xl font-bold text-slate-900 group-hover:text-brand-red transition-colors">Paint &amp; Refinishing</h3>
-                        <p class="text-slate-600 text-sm leading-relaxed">
-                            Computerized color matching in heated downdraft spray booths. Flawless metallic, matte, and OEM factory paint blends.
+                        <h3 class="font-heading text-xl font-bold text-slate-900 mb-3">Factory Paint Matching</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-6">
+                            Computerized spectrophotometer color matching, PPG waterborne paints, and climate-controlled downdraft thermal baking booths.
                         </p>
+                        <ul class="space-y-2 text-xs font-semibold text-slate-700 mb-6">
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-red"></i> Flawless Panel Blending</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-red"></i> Clear Coat Gloss Protection</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-red"></i> Environmental Waterborne Formulas</li>
+                        </ul>
                     </div>
-                    <button onclick="openServiceModal('Paint & Refinishing')" class="mt-6 text-brand-red font-bold text-xs uppercase tracking-wider flex items-center gap-1 group-hover:translate-x-1 transition-transform">
-                        Request Quote <i class="fa-solid fa-arrow-right"></i>
+                    <button onclick="openServiceDetail('paint')" class="w-full py-2.5 rounded-xl border border-slate-200 group-hover:border-brand-red group-hover:text-brand-red text-slate-700 text-xs font-bold transition-all">
+                        View Paint Details <i class="fa-solid fa-arrow-right ml-1"></i>
                     </button>
                 </div>
 
-                <!-- Service 3 -->
-                <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between group">
-                    <div class="space-y-4">
-                        <div class="w-14 h-14 rounded-2xl bg-red-50 text-brand-red group-hover:bg-brand-red group-hover:text-white transition-colors flex items-center justify-center text-2xl font-bold">
-                            <i class="fa-solid fa-hammer"></i>
+                <!-- Card 3 -->
+                <div class="bg-white p-8 rounded-2xl border border-slate-200 shadow-soft hover:shadow-xl transition-all duration-300 group flex flex-col justify-between">
+                    <div>
+                        <div class="w-14 h-14 bg-red-50 group-hover:bg-brand-red text-brand-red group-hover:text-white rounded-2xl flex items-center justify-center text-2xl transition-colors duration-300 mb-6">
+                            <i class="fa-solid fa-screwdriver-wrench"></i>
                         </div>
-                        <h3 class="font-heading text-xl font-bold text-slate-900 group-hover:text-brand-red transition-colors">Dent &amp; Scratch Repair</h3>
-                        <p class="text-slate-600 text-sm leading-relaxed">
-                            Paintless Dent Removal (PDR) for minor door dings and deep scratch correction to preserve original factory clear coat.
+                        <h3 class="font-heading text-xl font-bold text-slate-900 mb-3">Laser Frame Straightening</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-6">
+                            Car-O-Liner laser measuring equipment restores bent vehicle frames and unibody structures back to millimeter-perfect factory dimensions.
                         </p>
+                        <ul class="space-y-2 text-xs font-semibold text-slate-700 mb-6">
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-red"></i> Computerized Blueprinting</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-red"></i> Hydraulic Pulling Towers</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-red"></i> Complete Alignment Reports</li>
+                        </ul>
                     </div>
-                    <button onclick="openServiceModal('Dent & Scratch Repair')" class="mt-6 text-brand-red font-bold text-xs uppercase tracking-wider flex items-center gap-1 group-hover:translate-x-1 transition-transform">
-                        Request Quote <i class="fa-solid fa-arrow-right"></i>
+                    <button onclick="openServiceDetail('frame')" class="w-full py-2.5 rounded-xl border border-slate-200 group-hover:border-brand-red group-hover:text-brand-red text-slate-700 text-xs font-bold transition-all">
+                        View Frame Details <i class="fa-solid fa-arrow-right ml-1"></i>
                     </button>
                 </div>
 
-                <!-- Service 4 -->
-                <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between group">
-                    <div class="space-y-4">
-                        <div class="w-14 h-14 rounded-2xl bg-red-50 text-brand-red group-hover:bg-brand-red group-hover:text-white transition-colors flex items-center justify-center text-2xl font-bold">
-                            <i class="fa-solid fa-ruler-combined"></i>
-                        </div>
-                        <h3 class="font-heading text-xl font-bold text-slate-900 group-hover:text-brand-red transition-colors">Frame Straightening</h3>
-                        <p class="text-slate-600 text-sm leading-relaxed">
-                            Computerized laser frame measuring and chassis straightening ensuring your vehicle is aligned, safe, and road-ready.
-                        </p>
-                    </div>
-                    <button onclick="openServiceModal('Frame Straightening')" class="mt-6 text-brand-red font-bold text-xs uppercase tracking-wider flex items-center gap-1 group-hover:translate-x-1 transition-transform">
-                        Request Quote <i class="fa-solid fa-arrow-right"></i>
-                    </button>
-                </div>
-
-                <!-- Service 5 -->
-                <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between group">
-                    <div class="space-y-4">
-                        <div class="w-14 h-14 rounded-2xl bg-red-50 text-brand-red group-hover:bg-brand-red group-hover:text-white transition-colors flex items-center justify-center text-2xl font-bold">
+                <!-- Card 4 -->
+                <div class="bg-white p-8 rounded-2xl border border-slate-200 shadow-soft hover:shadow-xl transition-all duration-300 group flex flex-col justify-between">
+                    <div>
+                        <div class="w-14 h-14 bg-red-50 group-hover:bg-brand-red text-brand-red group-hover:text-white rounded-2xl flex items-center justify-center text-2xl transition-colors duration-300 mb-6">
                             <i class="fa-solid fa-shield-cat"></i>
                         </div>
-                        <h3 class="font-heading text-xl font-bold text-slate-900 group-hover:text-brand-red transition-colors">Bumper &amp; Fender Repair</h3>
-                        <p class="text-slate-600 text-sm leading-relaxed">
-                            Quick-turn bumper scuff repair, sensor recalibration, fender replacement, painted and installed in days.
+                        <h3 class="font-heading text-xl font-bold text-slate-900 mb-3">Bumper Repair & Replacement</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-6">
+                            Expert restoration of plastic, fiberglass, and composite bumpers. From minor scuffs to complete replacement with color-matched paint.
                         </p>
+                        <ul class="space-y-2 text-xs font-semibold text-slate-700 mb-6">
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-red"></i> Plastic Welding & Refinishing</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-red"></i> Parking Sensor Re-alignment</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-red"></i> Same-Day Minor Bumper Fixes</li>
+                        </ul>
                     </div>
-                    <button onclick="openServiceModal('Bumper & Fender Repair')" class="mt-6 text-brand-red font-bold text-xs uppercase tracking-wider flex items-center gap-1 group-hover:translate-x-1 transition-transform">
-                        Request Quote <i class="fa-solid fa-arrow-right"></i>
+                    <button onclick="openServiceDetail('bumper')" class="w-full py-2.5 rounded-xl border border-slate-200 group-hover:border-brand-red group-hover:text-brand-red text-slate-700 text-xs font-bold transition-all">
+                        View Bumper Details <i class="fa-solid fa-arrow-right ml-1"></i>
                     </button>
                 </div>
 
-                <!-- Service 6 -->
-                <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between group">
-                    <div class="space-y-4">
-                        <div class="w-14 h-14 rounded-2xl bg-red-50 text-brand-red group-hover:bg-brand-red group-hover:text-white transition-colors flex items-center justify-center text-2xl font-bold">
-                            <i class="fa-solid fa-file-invoice-dollar"></i>
+                <!-- Card 5 -->
+                <div class="bg-white p-8 rounded-2xl border border-slate-200 shadow-soft hover:shadow-xl transition-all duration-300 group flex flex-col justify-between">
+                    <div>
+                        <div class="w-14 h-14 bg-red-50 group-hover:bg-brand-red text-brand-red group-hover:text-white rounded-2xl flex items-center justify-center text-2xl transition-colors duration-300 mb-6">
+                            <i class="fa-solid fa-hammer"></i>
                         </div>
-                        <h3 class="font-heading text-xl font-bold text-slate-900 group-hover:text-brand-red transition-colors">Insurance Advocacy</h3>
-                        <p class="text-slate-600 text-sm leading-relaxed">
-                            We advocate on your behalf with all insurance carriers to ensure proper OEM parts and full repair coverage.
+                        <h3 class="font-heading text-xl font-bold text-slate-900 mb-3">Dent Removal & PDR</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-6">
+                            Paintless Dent Removal (PDR) for hail damage, door dings, and crease removal without altering your vehicle's original factory paint finish.
                         </p>
+                        <ul class="space-y-2 text-xs font-semibold text-slate-700 mb-6">
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-red"></i> Retains Factory Clear Coat</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-red"></i> Fast Turnaround Times</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-red"></i> Cost-Effective Repair Option</li>
+                        </ul>
                     </div>
-                    <button onclick="openServiceModal('Insurance Advocacy')" class="mt-6 text-brand-red font-bold text-xs uppercase tracking-wider flex items-center gap-1 group-hover:translate-x-1 transition-transform">
-                        Request Quote <i class="fa-solid fa-arrow-right"></i>
+                    <button onclick="openServiceDetail('dent')" class="w-full py-2.5 rounded-xl border border-slate-200 group-hover:border-brand-red group-hover:text-brand-red text-slate-700 text-xs font-bold transition-all">
+                        View Dent Details <i class="fa-solid fa-arrow-right ml-1"></i>
                     </button>
                 </div>
 
-                <!-- Service 7 -->
-                <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between group">
-                    <div class="space-y-4">
-                        <div class="w-14 h-14 rounded-2xl bg-red-50 text-brand-red group-hover:bg-brand-red group-hover:text-white transition-colors flex items-center justify-center text-2xl font-bold">
-                            <i class="fa-solid fa-window-maximize"></i>
+                <!-- Card 6 -->
+                <div class="bg-white p-8 rounded-2xl border border-slate-200 shadow-soft hover:shadow-xl transition-all duration-300 group flex flex-col justify-between">
+                    <div>
+                        <div class="w-14 h-14 bg-red-50 group-hover:bg-brand-red text-brand-red group-hover:text-white rounded-2xl flex items-center justify-center text-2xl transition-colors duration-300 mb-6">
+                            <i class="fa-solid fa-handshake"></i>
                         </div>
-                        <h3 class="font-heading text-xl font-bold text-slate-900 group-hover:text-brand-red transition-colors">Auto Glass Replacement</h3>
-                        <p class="text-slate-600 text-sm leading-relaxed">
-                            Windshield, side glass, and rear window glass replacement with ADAS camera sensor recalibration.
+                        <h3 class="font-heading text-xl font-bold text-slate-900 mb-3">Insurance Claim Advocacy</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-6">
+                            We act as your personal advocate with all major insurance companies to ensure proper OEM repair procedures are fully covered.
                         </p>
+                        <ul class="space-y-2 text-xs font-semibold text-slate-700 mb-6">
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-red"></i> Direct Electronic Billing</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-red"></i> Rental Car Assistance</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-red"></i> Deductible Assistance Options</li>
+                        </ul>
                     </div>
-                    <button onclick="openServiceModal('Auto Glass Replacement')" class="mt-6 text-brand-red font-bold text-xs uppercase tracking-wider flex items-center gap-1 group-hover:translate-x-1 transition-transform">
-                        Request Quote <i class="fa-solid fa-arrow-right"></i>
-                    </button>
-                </div>
-
-                <!-- Service 8 -->
-                <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between group">
-                    <div class="space-y-4">
-                        <div class="w-14 h-14 rounded-2xl bg-red-50 text-brand-red group-hover:bg-brand-red group-hover:text-white transition-colors flex items-center justify-center text-2xl font-bold">
-                            <i class="fa-solid fa-key"></i>
-                        </div>
-                        <h3 class="font-heading text-xl font-bold text-slate-900 group-hover:text-brand-red transition-colors">Lease Return Repairs</h3>
-                        <p class="text-slate-600 text-sm leading-relaxed">
-                            Avoid heavy dealership turn-in penalties. We repair minor scratches, scuffs, and panel dings before inspection.
-                        </p>
-                    </div>
-                    <button onclick="openServiceModal('Lease Return Repairs')" class="mt-6 text-brand-red font-bold text-xs uppercase tracking-wider flex items-center gap-1 group-hover:translate-x-1 transition-transform">
-                        Request Quote <i class="fa-solid fa-arrow-right"></i>
+                    <button onclick="openServiceDetail('insurance')" class="w-full py-2.5 rounded-xl border border-slate-200 group-hover:border-brand-red group-hover:text-brand-red text-slate-700 text-xs font-bold transition-all">
+                        View Insurance Info <i class="fa-solid fa-arrow-right ml-1"></i>
                     </button>
                 </div>
 
@@ -635,315 +704,260 @@
         </div>
     </section>
 
-    <!-- WHY CHOOSE US SECTION -->
-    <section id="why-us" class="py-20 bg-white border-b border-slate-200">
+    <!-- WHY CHOOSE US -->
+    <section id="why-us" class="py-20 bg-brand-dark text-white relative">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            
             <div class="grid lg:grid-cols-12 gap-12 items-center">
                 
                 <div class="lg:col-span-5 space-y-6">
-                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-100 text-slate-800 text-xs font-bold uppercase tracking-wider">
-                        <i class="fa-solid fa-award text-brand-red"></i> The ABC Advantage
-                    </div>
-
-                    <h2 class="font-heading text-3xl sm:text-4xl font-extrabold text-slate-900 leading-tight">
+                    <span class="text-brand-red font-extrabold text-xs uppercase tracking-widest"><i class="fa-solid fa-award mr-1"></i> The ABC Advantage</span>
+                    <h2 class="font-heading text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
                         Why Brooklyn Drivers Choose ABC Collision
                     </h2>
-
-                    <p class="text-slate-600 font-medium leading-relaxed">
-                        We built our reputation over decades by doing every repair right the first time. No shortcuts, no insurance compromises, and no hassle.
+                    <p class="text-slate-300 text-sm leading-relaxed">
+                        In New York City, collision repair shops are everywhere—but true craftsmanship and transparent customer advocacy are rare. Here is how ABC Collision stands out:
                     </p>
 
-                    <div class="p-6 bg-brand-dark text-white rounded-2xl shadow-lg border border-slate-800 space-y-3">
-                        <div class="flex items-center gap-3 text-brand-red text-xl font-bold">
-                            <i class="fa-solid fa-quote-left"></i>
-                            <span class="text-white text-base">Our Promise To You</span>
+                    <div class="space-y-4 pt-2">
+                        <div class="flex items-start gap-4 p-4 rounded-xl bg-slate-800/80 border border-slate-700">
+                            <div class="w-10 h-10 rounded-xl bg-brand-red/20 text-brand-red flex items-center justify-center font-bold text-lg shrink-0">
+                                <i class="fa-solid fa-scale-balanced"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white text-base">Your Right to Choose Your Shop</h4>
+                                <p class="text-xs text-slate-300 mt-1">Under NY State law, insurance companies cannot force you to use their preferred drive-in facilities. You have the legal right to choose ABC Collision for superior OEM quality.</p>
+                            </div>
                         </div>
-                        <p class="text-slate-300 text-sm italic">
-                            "If you don't need it, we won't sell it. We treat every car—from daily commuters to six-figure exotics—with the exact same obsession for quality."
-                        </p>
-                        <div class="text-xs font-bold text-slate-400">
-                            — Steve, Howie &amp; Ali (ABC Collision Team)
+
+                        <div class="flex items-start gap-4 p-4 rounded-xl bg-slate-800/80 border border-slate-700">
+                            <div class="w-10 h-10 rounded-xl bg-brand-red/20 text-brand-red flex items-center justify-center font-bold text-lg shrink-0">
+                                <i class="fa-solid fa-truck-pickup"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white text-base">24/7 Towing & Rental Coordination</h4>
+                                <p class="text-xs text-slate-300 mt-1">Was your vehicle stranded after an accident? We coordinate immediate flatbed towing and have rental cars waiting for you on-site.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4 p-4 rounded-xl bg-slate-800/80 border border-slate-700">
+                            <div class="w-10 h-10 rounded-xl bg-brand-red/20 text-brand-red flex items-center justify-center font-bold text-lg shrink-0">
+                                <i class="fa-solid fa-shield-heart"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white text-base">Written Lifetime Warranty</h4>
+                                <p class="text-xs text-slate-300 mt-1">Every paint finish, body repair, and structural restoration is backed by our lifetime warranty for as long as you own the vehicle.</p>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- 5 Visual Benefit Cards -->
-                <div class="lg:col-span-7 grid sm:grid-cols-2 gap-6">
-                    
-                    <div class="p-6 rounded-2xl bg-slate-50 border border-slate-200 hover:border-brand-red/50 transition-all">
-                        <div class="w-12 h-12 rounded-xl bg-brand-red text-white flex items-center justify-center font-bold text-xl mb-4">
-                            <i class="fa-solid fa-shield-check"></i>
+                <div class="lg:col-span-7">
+                    <div class="grid sm:grid-cols-2 gap-6">
+                        <div class="bg-slate-800 p-6 rounded-2xl border border-slate-700 space-y-3">
+                            <div class="text-brand-red text-3xl font-extrabold font-heading">01</div>
+                            <h3 class="font-bold text-lg text-white">I-CAR Gold Certified</h3>
+                            <p class="text-xs text-slate-300 leading-relaxed">Our technicians undergo continuous OEM training on high-voltage EVs, aluminum bodies, and modern safety camera/radar sensors.</p>
                         </div>
-                        <h3 class="font-heading text-lg font-bold text-slate-900 mb-2">Quality Workmanship</h3>
-                        <p class="text-slate-600 text-sm">
-                            Factory-spec alignment and paint blending to ensure your vehicle looks as good as it did on the showroom floor.
-                        </p>
-                    </div>
 
-                    <div class="p-6 rounded-2xl bg-slate-50 border border-slate-200 hover:border-brand-red/50 transition-all">
-                        <div class="w-12 h-12 rounded-xl bg-brand-red text-white flex items-center justify-center font-bold text-xl mb-4">
-                            <i class="fa-solid fa-user-gear"></i>
+                        <div class="bg-slate-800 p-6 rounded-2xl border border-slate-700 space-y-3">
+                            <div class="text-brand-red text-3xl font-extrabold font-heading">02</div>
+                            <h3 class="font-bold text-lg text-white">Advanced Diagnostics</h3>
+                            <p class="text-xs text-slate-300 leading-relaxed">Pre- and post-repair diagnostic computer scanning ensures all vehicle safety systems (ADAS, blind spot, braking) are fully operational.</p>
                         </div>
-                        <h3 class="font-heading text-lg font-bold text-slate-900 mb-2">Experienced Technicians</h3>
-                        <p class="text-slate-600 text-sm">
-                            I-CAR trained master mechanics and certified refinishing technicians with decades of hands-on expertise.
-                        </p>
-                    </div>
 
-                    <div class="p-6 rounded-2xl bg-slate-50 border border-slate-200 hover:border-brand-red/50 transition-all">
-                        <div class="w-12 h-12 rounded-xl bg-brand-red text-white flex items-center justify-center font-bold text-xl mb-4">
-                            <i class="fa-solid fa-handshake"></i>
+                        <div class="bg-slate-800 p-6 rounded-2xl border border-slate-700 space-y-3">
+                            <div class="text-brand-red text-3xl font-extrabold font-heading">03</div>
+                            <h3 class="font-bold text-lg text-white">Zero Hidden Fees</h3>
+                            <p class="text-xs text-slate-300 leading-relaxed">Detailed itemized estimates provided up front. We communicate directly with you before any additional work is authorized.</p>
                         </div>
-                        <h3 class="font-heading text-lg font-bold text-slate-900 mb-2">Honest &amp; Transparent</h3>
-                        <p class="text-slate-600 text-sm">
-                            Clear itemized written estimates before any work begins. No unexpected add-ons or hidden shop charges.
-                        </p>
-                    </div>
 
-                    <div class="p-6 rounded-2xl bg-slate-50 border border-slate-200 hover:border-brand-red/50 transition-all">
-                        <div class="w-12 h-12 rounded-xl bg-brand-red text-white flex items-center justify-center font-bold text-xl mb-4">
-                            <i class="fa-solid fa-car-side"></i>
-                        </div>
-                        <h3 class="font-heading text-lg font-bold text-slate-900 mb-2">All Makes &amp; Models</h3>
-                        <p class="text-slate-600 text-sm">
-                            From domestic sedans and trucks to European exotics (Lamborghini, Rolls-Royce, Porsche, Mercedes-Benz).
-                        </p>
-                    </div>
-
-                    <div class="sm:col-span-2 p-6 rounded-2xl bg-slate-50 border border-slate-200 hover:border-brand-red/50 transition-all flex items-center gap-4">
-                        <div class="w-12 h-12 rounded-xl bg-emerald-600 text-white flex items-center justify-center font-bold text-xl shrink-0">
-                            <i class="fa-solid fa-circle-check"></i>
-                        </div>
-                        <div>
-                            <h3 class="font-heading text-lg font-bold text-slate-900 mb-1">Lifetime Guarantee &amp; Detail Wash</h3>
-                            <p class="text-slate-600 text-sm">
-                                Every repaired vehicle is hand washed, vacuumed, detailed, and backed by our Lifetime Workmanship Warranty.
-                            </p>
+                        <div class="bg-slate-800 p-6 rounded-2xl border border-slate-700 space-y-3">
+                            <div class="text-brand-red text-3xl font-extrabold font-heading">04</div>
+                            <h3 class="font-bold text-lg text-white">Local Brooklyn Roots</h3>
+                            <p class="text-xs text-slate-300 leading-relaxed">Serving Utica Ave, Flatbush, Crown Heights, Canarsie, and all 5 boroughs with honest, reliable automotive repair excellence.</p>
                         </div>
                     </div>
-
                 </div>
 
             </div>
         </div>
     </section>
 
-    <!-- BEFORE & AFTER GALLERY SECTION -->
-    <section id="gallery" class="py-20 bg-slate-900 text-white border-b border-slate-800">
+    <!-- GALLERY / BEFORE & AFTER SHOWCASE -->
+    <section id="gallery" class="py-20 bg-white border-b border-slate-200">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            
-            <div class="text-center max-w-3xl mx-auto space-y-4 mb-16">
-                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-800 text-brand-red text-xs font-bold uppercase tracking-wider border border-slate-700">
-                    <i class="fa-solid fa-images"></i> Real Repair Showcase
-                </div>
-                <h2 class="font-heading text-3xl sm:text-4xl font-extrabold text-white">
-                    Before &amp; After Restoration Showcase
+            <div class="text-center max-w-3xl mx-auto mb-12 space-y-3">
+                <span class="text-brand-red font-extrabold text-xs uppercase tracking-widest">Real Results</span>
+                <h2 class="font-heading text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+                    Our Repair Showcase Gallery
                 </h2>
-                <p class="text-slate-400 font-medium">
-                    See how our master technicians turn severe accident damage back into pristine OEM condition.
+                <p class="text-slate-600 text-sm">
+                    Browse recent vehicle transformations completed at our Brooklyn repair shop.
                 </p>
+
+                <!-- Gallery Category Filter Tabs -->
+                <div class="flex flex-wrap items-center justify-center gap-2 pt-4">
+                    <button onclick="filterGallery('all')" id="tab-all" class="gallery-tab px-4 py-2 rounded-xl text-xs font-bold bg-brand-red text-white transition-all shadow-sm">All Repairs</button>
+                    <button onclick="filterGallery('collision')" id="tab-collision" class="gallery-tab px-4 py-2 rounded-xl text-xs font-bold bg-slate-100 text-slate-700 hover:bg-slate-200 transition-all">Major Collision</button>
+                    <button onclick="filterGallery('bumper')" id="tab-bumper" class="gallery-tab px-4 py-2 rounded-xl text-xs font-bold bg-slate-100 text-slate-700 hover:bg-slate-200 transition-all">Bumper & Fender</button>
+                    <button onclick="filterGallery('paint')" id="tab-paint" class="gallery-tab px-4 py-2 rounded-xl text-xs font-bold bg-slate-100 text-slate-700 hover:bg-slate-200 transition-all">Paint Restorations</button>
+                </div>
             </div>
 
-            <!-- Gallery Showcase Cards -->
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Gallery Grid -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6" id="gallery-grid">
                 
-                <!-- Project Card 1: Luxury SUV Front Collision -->
-                <div class="bg-slate-800 rounded-2xl overflow-hidden border border-slate-700 shadow-xl group">
-                    <div class="relative h-64 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=800&q=80" alt="Lamborghini Urus Front End Restoration" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                        <div class="absolute top-3 left-3 bg-brand-red text-white text-xs font-bold px-2.5 py-1 rounded shadow">
-                            Front-End Collision
-                        </div>
-                        <div class="absolute top-3 right-3 bg-slate-900/80 backdrop-blur-md text-emerald-400 text-xs font-bold px-2.5 py-1 rounded border border-slate-700">
-                            <i class="fa-solid fa-check"></i> 100% Match
-                        </div>
+                <!-- Gallery Item 1 -->
+                <div class="gallery-card gallery-collision bg-slate-50 rounded-2xl border border-slate-200 overflow-hidden shadow-soft">
+                    <div class="relative h-56">
+                        <img src="https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=800&q=80" alt="Restored Mercedes Benz" class="w-full h-full object-cover">
+                        <span class="absolute top-3 left-3 bg-emerald-600 text-white text-[10px] font-bold uppercase px-2.5 py-1 rounded">Restored</span>
+                        <span class="absolute top-3 right-3 bg-slate-900/80 backdrop-blur-sm text-white text-[10px] font-bold px-2.5 py-1 rounded">Mercedes C-Class</span>
                     </div>
-                    <div class="p-6 space-y-2">
-                        <h3 class="font-heading text-xl font-bold text-white">Lamborghini Urus</h3>
-                        <p class="text-xs text-slate-400">Front bumper replacement, sensor recalibration &amp; pearl yellow factory paint blend.</p>
-                        <div class="pt-2 text-xs font-semibold text-brand-red flex items-center gap-1">
-                            <span>Turnaround: 4 Days</span> &bull; <span>Insurance Covered</span>
-                        </div>
+                    <div class="p-5">
+                        <h4 class="font-bold text-slate-900 text-sm">Front Collision & Hood Alignment</h4>
+                        <p class="text-xs text-slate-500 mt-1">Complete radiator support, OEM headlamp assembly, and factory metallic paint blend.</p>
                     </div>
                 </div>
 
-                <!-- Project Card 2: Mercedes G-Wagon Repaint -->
-                <div class="bg-slate-800 rounded-2xl overflow-hidden border border-slate-700 shadow-xl group">
-                    <div class="relative h-64 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1520050206274-a1ae44613e6d?auto=format&fit=crop&w=800&q=80" alt="Mercedes G-Wagon Panel Work" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                        <div class="absolute top-3 left-3 bg-brand-red text-white text-xs font-bold px-2.5 py-1 rounded shadow">
-                            Panel &amp; Side Impact
-                        </div>
-                        <div class="absolute top-3 right-3 bg-slate-900/80 backdrop-blur-md text-emerald-400 text-xs font-bold px-2.5 py-1 rounded border border-slate-700">
-                            <i class="fa-solid fa-check"></i> 100% Match
-                        </div>
+                <!-- Gallery Item 2 -->
+                <div class="gallery-card gallery-bumper bg-slate-50 rounded-2xl border border-slate-200 overflow-hidden shadow-soft">
+                    <div class="relative h-56">
+                        <img src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=800&q=80" alt="Restored Sports Car Bumper" class="w-full h-full object-cover">
+                        <span class="absolute top-3 left-3 bg-emerald-600 text-white text-[10px] font-bold uppercase px-2.5 py-1 rounded">Restored</span>
+                        <span class="absolute top-3 right-3 bg-slate-900/80 backdrop-blur-sm text-white text-[10px] font-bold px-2.5 py-1 rounded">Chevrolet Corvette</span>
                     </div>
-                    <div class="p-6 space-y-2">
-                        <h3 class="font-heading text-xl font-bold text-white">Mercedes-Benz G-Wagon</h3>
-                        <p class="text-xs text-slate-400">Door panel straightening, customized gloss clear coat, and structural rim repair.</p>
-                        <div class="pt-2 text-xs font-semibold text-brand-red flex items-center gap-1">
-                            <span>Turnaround: 5 Days</span> &bull; <span>Custom Refinish</span>
-                        </div>
+                    <div class="p-5">
+                        <h4 class="font-bold text-slate-900 text-sm">Rear Bumper Crushing & Diffuser Fix</h4>
+                        <p class="text-xs text-slate-500 mt-1">Fiberglass repair, backup sensor recalibration, and triple-coat clear varnish finish.</p>
                     </div>
                 </div>
 
-                <!-- Project Card 3: BMW M-Series Fender Repair -->
-                <div class="bg-slate-800 rounded-2xl overflow-hidden border border-slate-700 shadow-xl group">
-                    <div class="relative h-64 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1555215695-3004980ad54e?auto=format&fit=crop&w=800&q=80" alt="BMW M-Series Matte Refinish" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                        <div class="absolute top-3 left-3 bg-brand-red text-white text-xs font-bold px-2.5 py-1 rounded shadow">
-                            Matte Paint Blend
-                        </div>
-                        <div class="absolute top-3 right-3 bg-slate-900/80 backdrop-blur-md text-emerald-400 text-xs font-bold px-2.5 py-1 rounded border border-slate-700">
-                            <i class="fa-solid fa-check"></i> 100% Match
-                        </div>
+                <!-- Gallery Item 3 -->
+                <div class="gallery-card gallery-paint bg-slate-50 rounded-2xl border border-slate-200 overflow-hidden shadow-soft">
+                    <div class="relative h-56">
+                        <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=800&q=80" alt="Porsche Paint Restoration" class="w-full h-full object-cover">
+                        <span class="absolute top-3 left-3 bg-emerald-600 text-white text-[10px] font-bold uppercase px-2.5 py-1 rounded">Restored</span>
+                        <span class="absolute top-3 right-3 bg-slate-900/80 backdrop-blur-sm text-white text-[10px] font-bold px-2.5 py-1 rounded">Porsche 911</span>
                     </div>
-                    <div class="p-6 space-y-2">
-                        <h3 class="font-heading text-xl font-bold text-white">BMW M4 Competition</h3>
-                        <p class="text-xs text-slate-400">Matte frozen paint correction, carbon fiber splitter repair, and laser alignment.</p>
-                        <div class="pt-2 text-xs font-semibold text-brand-red flex items-center gap-1">
-                            <span>Turnaround: 3 Days</span> &bull; <span>Specialist Paint</span>
-                        </div>
+                    <div class="p-5">
+                        <h4 class="font-bold text-slate-900 text-sm">Key Scratch & Full Body Refinish</h4>
+                        <p class="text-xs text-slate-500 mt-1">Multi-stage paint correction, panel wet-sanding, and ceramic glass coat finish.</p>
                     </div>
                 </div>
 
-            </div>
-
-            <div class="mt-12 text-center">
-                <button onclick="openEstimateModal()" class="px-8 py-4 bg-brand-red hover:bg-brand-redhover text-white font-extrabold rounded-xl text-sm transition-all shadow-glow inline-flex items-center gap-2">
-                    <i class="fa-solid fa-camera"></i>
-                    <span>Have Damage? Send Us Photos for an Estimate</span>
-                </button>
-            </div>
-
-        </div>
-    </section>
-
-    <!-- PROCESS SECTION -->
-    <section id="process" class="py-20 bg-white border-b border-slate-200">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            
-            <div class="text-center max-w-3xl mx-auto space-y-4 mb-16">
-                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-100 text-slate-800 text-xs font-bold uppercase tracking-wider">
-                    Four Steps &bull; Zero Stress
-                </div>
-                <h2 class="font-heading text-3xl sm:text-4xl font-extrabold text-slate-900">
-                    Our Hassle-Free Repair Process
-                </h2>
-                <p class="text-slate-600 font-medium">
-                    How we take you from an unfortunate accident back to driving with confidence.
-                </p>
-            </div>
-
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 relative">
-                
-                <!-- Step 1 -->
-                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200 relative text-center space-y-4 group hover:bg-white hover:shadow-xl transition-all">
-                    <div class="w-12 h-12 mx-auto rounded-full bg-brand-dark text-white font-extrabold text-lg flex items-center justify-center border-4 border-slate-200 group-hover:bg-brand-red group-hover:border-red-100 transition-colors">
-                        01
+                <!-- Gallery Item 4 -->
+                <div class="gallery-card gallery-collision bg-slate-50 rounded-2xl border border-slate-200 overflow-hidden shadow-soft">
+                    <div class="relative h-56">
+                        <img src="https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=800&q=80" alt="Audi SUV Collision" class="w-full h-full object-cover">
+                        <span class="absolute top-3 left-3 bg-emerald-600 text-white text-[10px] font-bold uppercase px-2.5 py-1 rounded">Restored</span>
+                        <span class="absolute top-3 right-3 bg-slate-900/80 backdrop-blur-sm text-white text-[10px] font-bold px-2.5 py-1 rounded">Audi Q7 SUV</span>
                     </div>
-                    <h3 class="font-heading text-xl font-bold text-slate-900">Drop Off or Tow In</h3>
-                    <p class="text-slate-600 text-xs leading-relaxed">
-                        Drive in or let us coordinate a local Brooklyn tow. Bring your claim info—we handle everything else.
-                    </p>
+                    <div class="p-5">
+                        <h4 class="font-bold text-slate-900 text-sm">Side Impact Quarter Panel Reconstruction</h4>
+                        <p class="text-xs text-slate-500 mt-1">Laser unibody pull, passenger door panel replacement, and tint matching.</p>
+                    </div>
                 </div>
 
-                <!-- Step 2 -->
-                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200 relative text-center space-y-4 group hover:bg-white hover:shadow-xl transition-all">
-                    <div class="w-12 h-12 mx-auto rounded-full bg-brand-dark text-white font-extrabold text-lg flex items-center justify-center border-4 border-slate-200 group-hover:bg-brand-red group-hover:border-red-100 transition-colors">
-                        02
+                <!-- Gallery Item 5 -->
+                <div class="gallery-card gallery-bumper bg-slate-50 rounded-2xl border border-slate-200 overflow-hidden shadow-soft">
+                    <div class="relative h-56">
+                        <img src="https://images.unsplash.com/photo-1508974239320-0a029497e820?auto=format&fit=crop&w=800&q=80" alt="Toyota Sedan Bumper" class="w-full h-full object-cover">
+                        <span class="absolute top-3 left-3 bg-emerald-600 text-white text-[10px] font-bold uppercase px-2.5 py-1 rounded">Restored</span>
+                        <span class="absolute top-3 right-3 bg-slate-900/80 backdrop-blur-sm text-white text-[10px] font-bold px-2.5 py-1 rounded">Toyota Camry</span>
                     </div>
-                    <h3 class="font-heading text-xl font-bold text-slate-900">Free Written Estimate</h3>
-                    <p class="text-slate-600 text-xs leading-relaxed">
-                        Comprehensive damage inspection with photos. We walk you through every detail before turning a wrench.
-                    </p>
+                    <div class="p-5">
+                        <h4 class="font-bold text-slate-900 text-sm">Fender & Front Bumper Scuff Repair</h4>
+                        <p class="text-xs text-slate-500 mt-1">Same-day bumper repair, bracket replacement, and seamless color blending.</p>
+                    </div>
                 </div>
 
-                <!-- Step 3 -->
-                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200 relative text-center space-y-4 group hover:bg-white hover:shadow-xl transition-all">
-                    <div class="w-12 h-12 mx-auto rounded-full bg-brand-dark text-white font-extrabold text-lg flex items-center justify-center border-4 border-slate-200 group-hover:bg-brand-red group-hover:border-red-100 transition-colors">
-                        03
+                <!-- Gallery Item 6 -->
+                <div class="gallery-card gallery-paint bg-slate-50 rounded-2xl border border-slate-200 overflow-hidden shadow-soft">
+                    <div class="relative h-56">
+                        <img src="https://images.unsplash.com/photo-1511919884226-fd3cad34687c?auto=format&fit=crop&w=800&q=80" alt="Sports Coupe Paint Match" class="w-full h-full object-cover">
+                        <span class="absolute top-3 left-3 bg-emerald-600 text-white text-[10px] font-bold uppercase px-2.5 py-1 rounded">Restored</span>
+                        <span class="absolute top-3 right-3 bg-slate-900/80 backdrop-blur-sm text-white text-[10px] font-bold px-2.5 py-1 rounded">BMW M4</span>
                     </div>
-                    <h3 class="font-heading text-xl font-bold text-slate-900">We Fight Your Claim</h3>
-                    <p class="text-slate-600 text-xs leading-relaxed">
-                        Steve, Howie, and Ali deal with the insurance adjuster directly so you get legitimate OEM repair quality.
-                    </p>
-                </div>
-
-                <!-- Step 4 -->
-                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200 relative text-center space-y-4 group hover:bg-white hover:shadow-xl transition-all">
-                    <div class="w-12 h-12 mx-auto rounded-full bg-brand-dark text-white font-extrabold text-lg flex items-center justify-center border-4 border-slate-200 group-hover:bg-brand-red group-hover:border-red-100 transition-colors">
-                        04
+                    <div class="p-5">
+                        <h4 class="font-bold text-slate-900 text-sm">Custom Metallic Pearl Refinishing</h4>
+                        <p class="text-xs text-slate-500 mt-1">OEM factory pearl coat match with baked oven clear coat protection.</p>
                     </div>
-                    <h3 class="font-heading text-xl font-bold text-slate-900">Repair &amp; Delivery</h3>
-                    <p class="text-slate-600 text-xs leading-relaxed">
-                        Frame, panel work, paint blend done to OEM spec. Picked up washed, detailed, and road ready.
-                    </p>
                 </div>
 
             </div>
         </div>
     </section>
 
-    <!-- INSURANCE ASSISTANCE SECTION -->
+    <!-- INSURANCE ADVOCACY & PROCESS SECTION -->
     <section id="insurance" class="py-20 bg-slate-50 border-b border-slate-200">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="bg-white rounded-3xl p-8 md:p-12 border border-slate-200 shadow-soft">
+            <div class="grid lg:grid-cols-12 gap-12 items-center">
                 
-                <div class="grid lg:grid-cols-12 gap-8 items-center">
-                    <div class="lg:col-span-7 space-y-6">
-                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-100 text-emerald-800 text-xs font-bold uppercase tracking-wider">
-                            <i class="fa-solid fa-file-shield text-emerald-600"></i> Seamless Claim Support
-                        </div>
-                        <h2 class="font-heading text-3xl sm:text-4xl font-extrabold text-slate-900 leading-tight">
-                            We Accept ALL Major Insurance Carriers
-                        </h2>
-                        <p class="text-slate-600 font-medium">
-                            Did you know? Under New York state law, <strong>you have the legal right to choose your collision repair shop</strong>. Your insurance company cannot force you to use their budget facility. Bring us your claim and we handle the paperwork, adjuster negotiations, supplements, and repair from start to finish.
-                        </p>
+                <div class="lg:col-span-6 space-y-6">
+                    <span class="text-brand-red font-extrabold text-xs uppercase tracking-widest"><i class="fa-solid fa-file-contract mr-1"></i> Seamless Insurance Handling</span>
+                    <h2 class="font-heading text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+                        We Work Directly With All Major Insurance Carriers
+                    </h2>
+                    <p class="text-slate-600 text-base leading-relaxed">
+                        Filing an auto insurance claim after a crash can be complicated and frustrating. ABC Collision simplifies the entire process. We communicate directly with insurance adjusters, handle supplements, and ensure proper factory repair methods are authorized.
+                    </p>
 
-                        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-2">
-                            <div class="p-3 text-center rounded-xl bg-slate-50 font-bold text-xs text-slate-700 border border-slate-200">
-                                GEICO
+                    <div class="space-y-3">
+                        <div class="p-4 rounded-xl bg-white border border-slate-200 shadow-sm flex items-center gap-4">
+                            <div class="w-10 h-10 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center font-extrabold shrink-0 text-lg">1</div>
+                            <div>
+                                <h4 class="font-bold text-slate-900 text-sm">Bring Your Vehicle to Us</h4>
+                                <p class="text-xs text-slate-500">Tow or drive your car to 1279 Utica Ave. We prepare a comprehensive itemized estimate.</p>
                             </div>
-                            <div class="p-3 text-center rounded-xl bg-slate-50 font-bold text-xs text-slate-700 border border-slate-200">
-                                State Farm
+                        </div>
+
+                        <div class="p-4 rounded-xl bg-white border border-slate-200 shadow-sm flex items-center gap-4">
+                            <div class="w-10 h-10 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center font-extrabold shrink-0 text-lg">2</div>
+                            <div>
+                                <h4 class="font-bold text-slate-900 text-sm">We File & Negotiate Your Claim</h4>
+                                <p class="text-xs text-slate-500">We send photo documentation and technical data directly to your insurance adjuster.</p>
                             </div>
-                            <div class="p-3 text-center rounded-xl bg-slate-50 font-bold text-xs text-slate-700 border border-slate-200">
-                                Progressive
-                            </div>
-                            <div class="p-3 text-center rounded-xl bg-slate-50 font-bold text-xs text-slate-700 border border-slate-200">
-                                Allstate
-                            </div>
-                            <div class="p-3 text-center rounded-xl bg-slate-50 font-bold text-xs text-slate-700 border border-slate-200">
-                                Liberty Mutual
-                            </div>
-                            <div class="p-3 text-center rounded-xl bg-slate-50 font-bold text-xs text-slate-700 border border-slate-200">
-                                USAA
-                            </div>
-                            <div class="p-3 text-center rounded-xl bg-slate-50 font-bold text-xs text-slate-700 border border-slate-200">
-                                Nationwide
-                            </div>
-                            <div class="p-3 text-center rounded-xl bg-brand-red text-white font-bold text-xs rounded-xl shadow-sm">
-                                + All Others
+                        </div>
+
+                        <div class="p-4 rounded-xl bg-white border border-slate-200 shadow-sm flex items-center gap-4">
+                            <div class="w-10 h-10 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center font-extrabold shrink-0 text-lg">3</div>
+                            <div>
+                                <h4 class="font-bold text-slate-900 text-sm">Drive Away With Full Warranty</h4>
+                                <p class="text-xs text-slate-500">Once repairs pass our 50-point quality check, you pick up your spotless, restored car.</p>
                             </div>
                         </div>
                     </div>
+                </div>
 
-                    <div class="lg:col-span-5 bg-slate-900 text-white p-8 rounded-2xl space-y-4">
-                        <h3 class="font-heading text-xl font-bold text-white flex items-center gap-2">
-                            <i class="fa-solid fa-headset text-brand-red"></i> Have an Active Claim Number?
-                        </h3>
-                        <p class="text-xs text-slate-300 leading-relaxed">
-                            Already filed with your insurance company? Call Steve or Ali at ABC Collision right now. Give us your claim number and we'll take over from there.
-                        </p>
-                        <a href="tel:7184510061" class="block w-full py-3 text-center rounded-xl bg-brand-red hover:bg-brand-redhover font-bold text-white transition-all text-sm shadow-md">
-                            Call (718) 451-0061 Now
-                        </a>
-                        <p class="text-[11px] text-center text-slate-400">
-                            Free towing assistance available in Brooklyn &amp; NYC metro area.
-                        </p>
+                <!-- Insurance Carrier Grid -->
+                <div class="lg:col-span-6 bg-white p-8 rounded-2xl border border-slate-200 shadow-soft">
+                    <h3 class="font-heading text-xl font-bold text-slate-900 mb-2">Accepted Insurance Carriers</h3>
+                    <p class="text-xs text-slate-500 mb-6">We accept direct billing and claims approval for all major providers including:</p>
+
+                    <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
+                        <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 text-center font-extrabold text-slate-800 text-sm flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-shield text-blue-600"></i> GEICO
+                        </div>
+                        <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 text-center font-extrabold text-slate-800 text-sm flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-shield text-red-600"></i> State Farm
+                        </div>
+                        <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 text-center font-extrabold text-slate-800 text-sm flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-shield text-blue-800"></i> Progressive
+                        </div>
+                        <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 text-center font-extrabold text-slate-800 text-sm flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-shield text-orange-600"></i> Allstate
+                        </div>
+                        <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 text-center font-extrabold text-slate-800 text-sm flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-shield text-yellow-600"></i> Liberty Mutual
+                        </div>
+                        <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 text-center font-extrabold text-slate-800 text-sm flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-shield text-emerald-600"></i> USAA
+                        </div>
+                    </div>
+
+                    <div class="mt-6 p-4 rounded-xl bg-red-50 border border-red-200 text-xs text-brand-red font-medium leading-relaxed">
+                        <i class="fa-solid fa-circle-info mr-1"></i> Don't see your insurance listed? We work with ALL insurance companies in NY State. Call us at (718) 451-0061 and we will assist you immediately.
                     </div>
                 </div>
 
@@ -951,91 +965,90 @@
         </div>
     </section>
 
-    <!-- CUSTOMER REVIEWS SECTION -->
+    <!-- REVIEWS SECTION -->
     <section id="reviews" class="py-20 bg-white border-b border-slate-200">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            
-            <div class="text-center max-w-3xl mx-auto space-y-4 mb-16">
-                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-100 text-amber-800 text-xs font-bold uppercase tracking-wider">
-                    <i class="fa-solid fa-star text-amber-500"></i> Verified Customer Feedback
-                </div>
-                <h2 class="font-heading text-3xl sm:text-4xl font-extrabold text-slate-900">
-                    The Shop Your Neighbor Recommended
+            <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
+                <span class="text-brand-red font-extrabold text-xs uppercase tracking-widest">Customer Feedback</span>
+                <h2 class="font-heading text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+                    Trusted By Over 10,000+ Brooklyn Drivers
                 </h2>
-                <p class="text-slate-600 font-medium">
-                    4.7 Stars out of 5 from over 190+ real Google reviews in Brooklyn, NY.
-                </p>
+                <div class="flex items-center justify-center gap-2 text-amber-400 text-lg">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <span class="text-slate-900 font-extrabold text-base ml-1">4.7 / 5.0 Rating on Google</span>
+                </div>
             </div>
 
-            <!-- 3 Featured Testimonial Cards -->
+            <!-- Review Cards Grid -->
             <div class="grid md:grid-cols-3 gap-8">
                 
                 <!-- Review 1 -->
-                <div class="bg-slate-50 p-8 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between relative space-y-6">
-                    <div class="space-y-4">
-                        <div class="flex items-center text-amber-400 gap-1 text-sm">
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200 flex flex-col justify-between shadow-sm">
+                    <div class="space-y-3">
+                        <div class="flex items-center justify-between">
+                            <div class="flex text-amber-400 text-sm">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            </div>
+                            <span class="text-xs font-bold text-slate-400"><i class="fa-brands fa-google mr-1"></i>Google Review</span>
                         </div>
-                        <p class="text-slate-700 text-sm leading-relaxed italic">
-                            "Ali and Steve were honest, transparent and efficient. My Urus had front-end damage and I was worried the color wouldn't match—couldn't tell the difference once it was done. Wouldn't go anywhere else."
+                        <p class="text-xs sm:text-sm text-slate-700 leading-relaxed italic">
+                            "Someone smashed my passenger side door and fender while parked in Brooklyn. ABC Collision handled everything with my insurance company, gave me a rental, and returned my car looking cleaner than when I bought it!"
                         </p>
                     </div>
-                    <div class="flex items-center justify-between border-t border-slate-200 pt-4">
+                    <div class="mt-6 pt-4 border-t border-slate-200 flex items-center justify-between">
                         <div>
-                            <div class="font-bold text-slate-900 text-sm">Abdulkarim A.</div>
-                            <div class="text-xs text-slate-500">Lamborghini Urus Owner</div>
+                            <h4 class="font-bold text-slate-900 text-sm">Marcus Vance</h4>
+                            <span class="text-[11px] text-slate-500">Flatbush, Brooklyn • 2021 Honda Accord</span>
                         </div>
-                        <span class="text-xs font-bold text-brand-red bg-red-50 px-2 py-1 rounded">Google Verified</span>
+                        <i class="fa-solid fa-circle-check text-emerald-500 text-lg"></i>
                     </div>
                 </div>
 
                 <!-- Review 2 -->
-                <div class="bg-slate-50 p-8 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between relative space-y-6">
-                    <div class="space-y-4">
-                        <div class="flex items-center text-amber-400 gap-1 text-sm">
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200 flex flex-col justify-between shadow-sm">
+                    <div class="space-y-3">
+                        <div class="flex items-center justify-between">
+                            <div class="flex text-amber-400 text-sm">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            </div>
+                            <span class="text-xs font-bold text-slate-400"><i class="fa-brands fa-google mr-1"></i>Google Review</span>
                         </div>
-                        <p class="text-slate-700 text-sm leading-relaxed italic">
-                            "Steve went above and beyond, even finding a way to save me money on my deductible. Worked directly with my insurance. Picked up the car fully repaired, cleaned, and detailed."
+                        <p class="text-xs sm:text-sm text-slate-700 leading-relaxed italic">
+                            "The paint matching on my BMW pearl white bumper was 100% flawless. Most shops struggle with pearl coats, but ABC Collision made it invisible. Highly recommended!"
                         </p>
                     </div>
-                    <div class="flex items-center justify-between border-t border-slate-200 pt-4">
+                    <div class="mt-6 pt-4 border-t border-slate-200 flex items-center justify-between">
                         <div>
-                            <div class="font-bold text-slate-900 text-sm">Monique G.</div>
-                            <div class="text-xs text-slate-500">Insurance Claim Customer</div>
+                            <h4 class="font-bold text-slate-900 text-sm">Elena Rostova</h4>
+                            <span class="text-[11px] text-slate-500">Crown Heights, Brooklyn • BMW 530i</span>
                         </div>
-                        <span class="text-xs font-bold text-brand-red bg-red-50 px-2 py-1 rounded">Google Verified</span>
+                        <i class="fa-solid fa-circle-check text-emerald-500 text-lg"></i>
                     </div>
                 </div>
 
                 <!-- Review 3 -->
-                <div class="bg-slate-50 p-8 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between relative space-y-6">
-                    <div class="space-y-4">
-                        <div class="flex items-center text-amber-400 gap-1 text-sm">
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200 flex flex-col justify-between shadow-sm">
+                    <div class="space-y-3">
+                        <div class="flex items-center justify-between">
+                            <div class="flex text-amber-400 text-sm">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            </div>
+                            <span class="text-xs font-bold text-slate-400"><i class="fa-brands fa-google mr-1"></i>Google Review</span>
                         </div>
-                        <p class="text-slate-700 text-sm leading-relaxed italic">
-                            "I've been dealing with Howie and Steve for probably 10 years. Reliable, trustworthy, family business, easy to deal with—job is always done properly for a fair price. Wouldn't let anyone else work on my car."
+                        <p class="text-xs sm:text-sm text-slate-700 leading-relaxed italic">
+                            "Fast turnaround, honest pricing, and friendly mechanics. They even cleaned my interior before pickup. This is the only body shop I will ever use in NYC."
                         </p>
                     </div>
-                    <div class="flex items-center justify-between border-t border-slate-200 pt-4">
+                    <div class="mt-6 pt-4 border-t border-slate-200 flex items-center justify-between">
                         <div>
-                            <div class="font-bold text-slate-900 text-sm">Andrew B.</div>
-                            <div class="text-xs text-slate-500">'85 Mercedes Wagon Owner</div>
+                            <h4 class="font-bold text-slate-900 text-sm">David Miller</h4>
+                            <span class="text-[11px] text-slate-500">Canarsie, Brooklyn • Ford F-150</span>
                         </div>
-                        <span class="text-xs font-bold text-brand-red bg-red-50 px-2 py-1 rounded">Google Verified</span>
+                        <i class="fa-solid fa-circle-check text-emerald-500 text-lg"></i>
                     </div>
                 </div>
 
@@ -1043,159 +1056,140 @@
         </div>
     </section>
 
-    <!-- HIGH CONVERSION CTA BANNER -->
-    <section class="py-16 bg-gradient-to-r from-brand-red via-red-700 to-brand-dark text-white relative overflow-hidden">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6 relative z-10">
-            <h2 class="font-heading text-3xl sm:text-5xl font-black text-white leading-tight">
-                Had an Accident? Let’s Get Your Vehicle Back on the Road.
-            </h2>
-            <p class="text-lg text-red-100 max-w-2xl mx-auto font-medium">
-                Free written estimates, total insurance advocacy, and factory repair craftsmanship in Brooklyn.
-            </p>
-            <div class="flex flex-row items-center justify-center gap-3 pt-4 w-full max-w-xl mx-auto">
-                <button onclick="openEstimateModal()" class="flex-1 sm:flex-initial px-4 sm:px-8 py-3.5 sm:py-4 rounded-xl bg-white text-brand-red font-extrabold text-xs sm:text-base hover:bg-slate-100 transition-all shadow-lg hover:-translate-y-0.5 whitespace-nowrap text-center">
-                    Get Free Estimate
-                </button>
-                <a href="tel:7184510061" class="flex-1 sm:flex-initial px-4 sm:px-8 py-3.5 sm:py-4 rounded-xl bg-slate-900 text-white font-extrabold text-base hover:bg-slate-800 transition-all border border-slate-700 shadow-lg flex items-center justify-center gap-2 whitespace-nowrap text-xs sm:text-base">
-                    <i class="fa-solid fa-phone text-brand-red"></i>
-                    <span>Call 718-451-0061</span>
-                </a>
+    <!-- FAQ ACCORDION SECTION -->
+    <section class="py-20 bg-slate-50 border-b border-slate-200">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <span class="text-brand-red font-extrabold text-xs uppercase tracking-widest">Have Questions?</span>
+                <h2 class="font-heading text-3xl font-extrabold text-slate-900 tracking-tight mt-1">Frequently Asked Questions</h2>
+            </div>
+
+            <div class="space-y-4">
+                <!-- FAQ 1 -->
+                <div class="bg-white rounded-xl border border-slate-200 overflow-hidden">
+                    <button onclick="toggleFaq('faq-1')" class="w-full text-left p-5 font-bold text-slate-900 text-sm sm:text-base flex items-center justify-between hover:bg-slate-50 transition-colors">
+                        <span>Do I have to use the repair shop my insurance company recommends?</span>
+                        <i id="icon-faq-1" class="fa-solid fa-chevron-down text-brand-red transition-transform"></i>
+                    </button>
+                    <div id="faq-1" class="hidden p-5 pt-0 text-xs sm:text-sm text-slate-600 leading-relaxed border-t border-slate-100 bg-slate-50/50">
+                        No. Under New York State Insurance Law, you have the absolute legal right to choose any auto body repair shop you prefer. Insurance companies cannot force or steer you toward their direct repair facilities. ABC Collision works with all insurance companies to ensure your vehicle receives genuine OEM parts and proper repairs.
+                    </div>
+                </div>
+
+                <!-- FAQ 2 -->
+                <div class="bg-white rounded-xl border border-slate-200 overflow-hidden">
+                    <button onclick="toggleFaq('faq-2')" class="w-full text-left p-5 font-bold text-slate-900 text-sm sm:text-base flex items-center justify-between hover:bg-slate-50 transition-colors">
+                        <span>How long does a typical collision repair take?</span>
+                        <i id="icon-faq-2" class="fa-solid fa-chevron-down text-brand-red transition-transform"></i>
+                    </button>
+                    <div id="faq-2" class="hidden p-5 pt-0 text-xs sm:text-sm text-slate-600 leading-relaxed border-t border-slate-100 bg-slate-50/50">
+                        Repair timelines depend on the extent of damage and parts availability. Minor bumper or dent repairs usually take 2 to 4 days. Major collision repairs involving frame straightening and multiple panel replacements typically take 7 to 12 business days. We provide continuous progress updates via our online repair tracker.
+                    </div>
+                </div>
+
+                <!-- FAQ 3 -->
+                <div class="bg-white rounded-xl border border-slate-200 overflow-hidden">
+                    <button onclick="toggleFaq('faq-3')" class="w-full text-left p-5 font-bold text-slate-900 text-sm sm:text-base flex items-center justify-between hover:bg-slate-50 transition-colors">
+                        <span>Will my vehicle's new paint match the original factory color?</span>
+                        <i id="icon-faq-3" class="fa-solid fa-chevron-down text-brand-red transition-transform"></i>
+                    </button>
+                    <div id="faq-3" class="hidden p-5 pt-0 text-xs sm:text-sm text-slate-600 leading-relaxed border-t border-slate-100 bg-slate-50/50">
+                        Yes! We utilize computerized spectrophotometers that read your vehicle’s exact factory color code and account for paint aging. Combined with our climate-controlled downdraft paint booths and PPG waterborne paints, we guarantee a 100% seamless factory match.
+                    </div>
+                </div>
+
+                <!-- FAQ 4 -->
+                <div class="bg-white rounded-xl border border-slate-200 overflow-hidden">
+                    <button onclick="toggleFaq('faq-4')" class="w-full text-left p-5 font-bold text-slate-900 text-sm sm:text-base flex items-center justify-between hover:bg-slate-50 transition-colors">
+                        <span>Do you offer a warranty on your bodywork and paint?</span>
+                        <i id="icon-faq-4" class="fa-solid fa-chevron-down text-brand-red transition-transform"></i>
+                    </button>
+                    <div id="faq-4" class="hidden p-5 pt-0 text-xs sm:text-sm text-slate-600 leading-relaxed border-t border-slate-100 bg-slate-50/50">
+                        Yes, all structural repairs, body craftsmanship, and paint refinishing completed at ABC Collision are backed by a written Lifetime Warranty for as long as you own the vehicle.
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- CONTACT & FREE ESTIMATE SECTION -->
-    <section id="contact" class="py-20 bg-slate-50">
+    <!-- CONTACT & LOCATION SECTION -->
+    <section id="contact" class="py-20 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid lg:grid-cols-12 gap-12">
                 
-                <!-- Left Info & Business Hours -->
-                <div class="lg:col-span-5 space-y-8">
-                    <div>
-                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-200 text-slate-800 text-xs font-bold uppercase tracking-wider mb-3">
-                            <i class="fa-solid fa-location-dot text-brand-red"></i> Visit Our Shop
-                        </div>
-                        <h2 class="font-heading text-3xl font-extrabold text-slate-900">
-                            ABC Collision Brooklyn
-                        </h2>
-                        <p class="text-slate-600 text-sm mt-2">
-                            Conveniently located on Utica Avenue in Brooklyn, serving all NYC boroughs.
-                        </p>
-                    </div>
+                <!-- Contact Info & Form -->
+                <div class="lg:col-span-6 space-y-6">
+                    <span class="text-brand-red font-extrabold text-xs uppercase tracking-widest"><i class="fa-solid fa-location-dot mr-1"></i> Visit Brooklyn Shop</span>
+                    <h2 class="font-heading text-3xl font-extrabold text-slate-900 tracking-tight">
+                        Get In Touch With ABC Collision
+                    </h2>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        Stop by our Utica Avenue shop for an in-person estimate, or submit your details below to connect with an estimator.
+                    </p>
 
                     <div class="space-y-4">
-                        <!-- Location -->
-                        <div class="flex items-start gap-4 p-4 rounded-2xl bg-white border border-slate-200">
-                            <div class="w-10 h-10 rounded-xl bg-red-50 text-brand-red flex items-center justify-center font-bold shrink-0">
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-xl bg-red-100 text-brand-red flex items-center justify-center font-bold text-lg shrink-0">
                                 <i class="fa-solid fa-map-location-dot"></i>
                             </div>
                             <div>
                                 <h4 class="font-bold text-slate-900 text-sm">Shop Address</h4>
-                                <p class="text-xs text-slate-600 font-medium">1279 Utica Ave, Brooklyn, NY 11203</p>
-                                <a href="https://maps.google.com/?cid=12059596676739388832" target="_blank" rel="noopener noreferrer" class="text-xs font-bold text-brand-red hover:underline mt-1 inline-block">Get Driving Directions &rarr;</a>
+                                <p class="text-xs text-slate-600">1279 Utica Ave, Brooklyn, NY 11203</p>
+                                <a href="https://maps.google.com/?q=1279+Utica+Ave+Brooklyn+NY+11203" target="_blank" class="text-xs text-brand-red font-bold hover:underline inline-block mt-1">Get Driving Directions <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i></a>
                             </div>
                         </div>
 
-                        <!-- Phone -->
-                        <div class="flex items-start gap-4 p-4 rounded-2xl bg-white border border-slate-200">
-                            <div class="w-10 h-10 rounded-xl bg-red-50 text-brand-red flex items-center justify-center font-bold shrink-0">
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-xl bg-red-100 text-brand-red flex items-center justify-center font-bold text-lg shrink-0">
                                 <i class="fa-solid fa-phone"></i>
                             </div>
                             <div>
-                                <h4 class="font-bold text-slate-900 text-sm">Direct Phone</h4>
-                                <p class="text-xs text-slate-600 font-medium">(718) 451-0061</p>
-                                <a href="tel:7184510061" class="text-xs font-bold text-brand-red hover:underline mt-1 inline-block">Call Now &rarr;</a>
+                                <h4 class="font-bold text-slate-900 text-sm">Phone Number</h4>
+                                <p class="text-xs text-slate-600">(718) 451-0061</p>
+                                <span class="text-[11px] text-slate-400">Available Mon-Sat for immediate dispatch & inquiry</span>
                             </div>
                         </div>
 
-                        <!-- Hours -->
-                        <div class="flex items-start gap-4 p-4 rounded-2xl bg-white border border-slate-200">
-                            <div class="w-10 h-10 rounded-xl bg-red-50 text-brand-red flex items-center justify-center font-bold shrink-0">
-                                <i class="fa-regular fa-clock"></i>
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-xl bg-red-100 text-brand-red flex items-center justify-center font-bold text-lg shrink-0">
+                                <i class="fa-solid fa-clock"></i>
                             </div>
-                            <div class="w-full">
-                                <h4 class="font-bold text-slate-900 text-sm">Business Hours</h4>
-                                <div class="text-xs text-slate-600 space-y-1 mt-1 font-medium">
-                                    <div class="flex justify-between"><span>Monday – Friday:</span> <span>8:00 AM – 6:00 PM</span></div>
-                                    <div class="flex justify-between"><span>Saturday:</span> <span>9:00 AM – 2:00 PM</span></div>
-                                    <div class="flex justify-between text-slate-400"><span>Sunday:</span> <span>Closed</span></div>
-                                </div>
+                            <div>
+                                <h4 class="font-bold text-slate-900 text-sm">Operating Hours</h4>
+                                <p class="text-xs text-slate-600">Monday – Friday: 8:00 AM – 6:00 PM</p>
+                                <p class="text-xs text-slate-600">Saturday: 9:00 AM – 2:00 PM</p>
+                                <p class="text-xs text-slate-600">Sunday: Closed (Towing Available 24/7)</p>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Map Preview Iframe -->
-                    <div class="rounded-2xl overflow-hidden border border-slate-200 shadow-sm h-52 relative">
-                        <iframe title="ABC Collision Google Map Location" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3027.674828118029!2d-73.9312521!3d40.6370425!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25b2433de42e3%3A0xa77c4b48738855a0!2s1279%20Utica%20Ave%2C%20Brooklyn%2C%20NY%2011203!5e0!3m2!1sen!2sus!4v1700000000000!5m2!1sen!2sus" class="w-full h-full border-0" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                    </div>
+                    <!-- Quick Contact Form -->
+                    <form onsubmit="handleContactSubmit(event)" class="bg-slate-50 p-6 rounded-2xl border border-slate-200 space-y-4">
+                        <h4 class="font-heading font-bold text-slate-900 text-base">Send Quick Message</h4>
+                        <div class="grid sm:grid-cols-2 gap-3">
+                            <input type="text" placeholder="Your Full Name *" required class="w-full bg-white border border-slate-200 text-xs sm:text-sm rounded-xl px-3.5 py-2.5 focus:outline-none focus:ring-2 focus:ring-brand-red">
+                            <input type="tel" placeholder="Phone Number *" required class="w-full bg-white border border-slate-200 text-xs sm:text-sm rounded-xl px-3.5 py-2.5 focus:outline-none focus:ring-2 focus:ring-brand-red">
+                        </div>
+                        <textarea placeholder="Describe your vehicle damage or questions..." rows="3" required class="w-full bg-white border border-slate-200 text-xs sm:text-sm rounded-xl px-3.5 py-2.5 focus:outline-none focus:ring-2 focus:ring-brand-red"></textarea>
+                        <button type="submit" class="w-full py-3 bg-brand-red hover:bg-brand-redhover text-white font-bold rounded-xl text-xs sm:text-sm transition-all shadow-md">
+                            Send Message to Estimators
+                        </button>
+                    </form>
                 </div>
 
-                <!-- Right Form: Request Estimate -->
-                <div class="lg:col-span-7 bg-white p-8 sm:p-10 rounded-3xl border border-slate-200 shadow-soft">
-                    <div class="space-y-2 mb-6">
-                        <h3 class="font-heading text-2xl font-bold text-slate-900">Request a Free Written Estimate</h3>
-                        <p class="text-slate-600 text-sm">Fill out the form below or drop by our shop—no appointment necessary.</p>
+                <!-- Google Map Embed Column -->
+                <div class="lg:col-span-6 flex flex-col h-full">
+                    <div class="bg-slate-100 rounded-2xl border border-slate-200 overflow-hidden h-full min-h-[400px] relative shadow-soft">
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3027.672620573981!2d-73.93083692342938!3d40.63711997140498!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25b3310f82d23%3A0x633d9c792131920d!2s1279%20Utica%20Ave%2C%20Brooklyn%2C%20NY%2011203!5e0!3m2!1sen!2sus!4v1700000000000!5m2!1sen!2sus" 
+                            width="100%" 
+                            height="100%" 
+                            style="border:0; min-height: 420px;" 
+                            allowfullscreen="" 
+                            loading="lazy" 
+                            referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
                     </div>
-
-                    <form id="contact-form" onsubmit="handleFormSubmit(event)" class="space-y-4">
-                        <div class="grid sm:grid-cols-2 gap-4">
-                            <div>
-                                <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Your Full Name *</label>
-                                <input type="text" required placeholder="John Doe" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-brand-red font-medium">
-                            </div>
-                            <div>
-                                <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Phone Number *</label>
-                                <input type="tel" required placeholder="(718) 000-0000" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-brand-red font-medium">
-                            </div>
-                        </div>
-
-                        <div class="grid sm:grid-cols-2 gap-4">
-                            <div>
-                                <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Email Address</label>
-                                <input type="email" placeholder="john@example.com" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-brand-red font-medium">
-                            </div>
-                            <div>
-                                <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Vehicle Make / Model / Year *</label>
-                                <input type="text" required placeholder="e.g. 2021 Honda Accord / BMW X5" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-brand-red font-medium">
-                            </div>
-                        </div>
-
-                        <div>
-                            <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Insurance Carrier (If Applicable)</label>
-                            <input type="text" placeholder="e.g. GEICO, Progressive, Self-Pay" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-brand-red font-medium">
-                        </div>
-
-                        <div>
-                            <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Describe Damage &amp; Service Needed *</label>
-                            <textarea rows="4" required placeholder="Describe what happened or what repairs you require..." class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-brand-red font-medium"></textarea>
-                        </div>
-
-                        <!-- Photo Attachment Mock -->
-                        <div class="border-2 border-dashed border-slate-200 rounded-2xl p-4 text-center bg-slate-50 cursor-pointer hover:bg-slate-100 transition-colors">
-                            <i class="fa-solid fa-cloud-arrow-up text-brand-red text-2xl mb-1"></i>
-                            <div class="text-xs font-bold text-slate-700">Attach Damage Photos (Optional)</div>
-                            <div class="text-[11px] text-slate-500">Drag &amp; drop photos or click to upload from your device</div>
-                            <input type="file" class="hidden" id="photo-upload">
-                        </div>
-
-                        <button type="submit" class="w-full py-4 rounded-xl bg-brand-red hover:bg-brand-redhover text-white font-extrabold text-base transition-all shadow-glow flex items-center justify-center gap-2">
-                            <span>Submit Estimate Request</span>
-                            <i class="fa-solid fa-paper-plane text-sm"></i>
-                        </button>
-                        <p class="text-[11px] text-slate-500 text-center">
-                            <i class="fa-solid fa-lock text-slate-400"></i> Your details are 100% confidential. We reply within 1 business hour.
-                        </p>
-                    </form>
-
-                    <!-- Success Message Box -->
-                    <div id="form-success" class="hidden bg-emerald-50 border border-emerald-200 text-emerald-800 p-6 rounded-2xl text-center space-y-2 mt-4">
-                        <div class="w-12 h-12 bg-emerald-600 text-white rounded-full flex items-center justify-center mx-auto text-xl">
-                            <i class="fa-solid fa-check"></i>
-                        </div>
-                        <h4 class="font-bold text-lg text-emerald-900">Estimate Request Received!</h4>
-                        <p class="text-xs text-emerald-700">Steve or Ali from ABC Collision will review your details and reach out shortly at your phone number.</p>
-                    </div>
-
                 </div>
 
             </div>
@@ -1203,256 +1197,406 @@
     </section>
 
     <!-- FOOTER -->
-    <footer class="bg-brand-dark text-white border-t border-slate-800">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
-                
-                <!-- Brand Info -->
-                <div class="lg:col-span-2 space-y-4">
-                    <div class="flex items-center gap-3">
-                        <div class="w-10 h-10 bg-brand-red text-white flex items-center justify-center rounded-xl font-bold text-xl">
+    <footer class="bg-brand-dark text-white border-t border-slate-800 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 pb-12 border-b border-slate-800">
+                <div class="space-y-3 md:col-span-1">
+                    <div class="flex items-center gap-2">
+                        <div class="w-8 h-8 bg-brand-red text-white flex items-center justify-center rounded-lg font-bold text-lg">
                             <i class="fa-solid fa-car-burst"></i>
                         </div>
-                        <span class="font-heading text-2xl font-black text-white tracking-tight">
-                            ABC <span class="text-brand-red">COLLISION</span>
-                        </span>
+                        <span class="font-heading text-xl font-bold text-white">ABC COLLISION</span>
                     </div>
-                    <p class="text-slate-400 text-sm leading-relaxed max-w-sm">
-                        Brooklyn's premier auto body and collision repair shop. Serving 1279 Utica Ave, Brooklyn NY 11203 with precision craftsmanship, factory color matching, and full insurance advocacy.
+                    <p class="text-xs text-slate-400 leading-relaxed">
+                        Brooklyn's trusted auto body and collision repair shop. Certified craftsmanship, factory paint match, and lifetime warranty.
                     </p>
-                    <div class="flex items-center gap-3 text-slate-400 text-lg">
-                        <a href="#" class="w-9 h-9 rounded-lg bg-slate-800 flex items-center justify-center hover:bg-brand-red hover:text-white transition-colors"><i class="fa-brands fa-facebook-f"></i></a>
-                        <a href="#" class="w-9 h-9 rounded-lg bg-slate-800 flex items-center justify-center hover:bg-brand-red hover:text-white transition-colors"><i class="fa-brands fa-instagram"></i></a>
-                        <a href="#" class="w-9 h-9 rounded-lg bg-slate-800 flex items-center justify-center hover:bg-brand-red hover:text-white transition-colors"><i class="fa-brands fa-google"></i></a>
-                    </div>
                 </div>
 
-                <!-- Quick Links -->
                 <div>
-                    <h4 class="font-heading text-base font-bold text-white mb-4">Quick Links</h4>
-                    <ul class="space-y-2 text-sm text-slate-400">
-                        <li><a href="#about" class="hover:text-brand-red transition-colors">About ABC Collision</a></li>
-                        <li><a href="#services" class="hover:text-brand-red transition-colors">Repair Services</a></li>
-                        <li><a href="#why-us" class="hover:text-brand-red transition-colors">Why Choose Us</a></li>
-                        <li><a href="#gallery" class="hover:text-brand-red transition-colors">Before &amp; After</a></li>
-                        <li><a href="#process" class="hover:text-brand-red transition-colors">Repair Process</a></li>
-                        <li><a href="#reviews" class="hover:text-brand-red transition-colors">Customer Reviews</a></li>
+                    <h4 class="font-heading font-bold text-white text-sm mb-3">Quick Navigation</h4>
+                    <ul class="space-y-2 text-xs text-slate-400">
+                        <li><a href="#about" class="hover:text-white transition-colors">About Facility</a></li>
+                        <li><a href="#services" class="hover:text-white transition-colors">Repair Services</a></li>
+                        <li><a href="#gallery" class="hover:text-white transition-colors">Before & After Showcase</a></li>
+                        <li><a href="#tracker" class="hover:text-white transition-colors">Live Status Tracker</a></li>
+                        <li><a href="#insurance" class="hover:text-white transition-colors">Insurance Claim Info</a></li>
                     </ul>
                 </div>
 
-                <!-- Services -->
                 <div>
-                    <h4 class="font-heading text-base font-bold text-white mb-4">Our Services</h4>
-                    <ul class="space-y-2 text-sm text-slate-400">
-                        <li>Collision Repair</li>
-                        <li>OEM Paint &amp; Refinishing</li>
-                        <li>Dent &amp; Scratch Removal</li>
-                        <li>Frame Straightening</li>
-                        <li>Bumper &amp; Fender Work</li>
-                        <li>Insurance Claim Advocacy</li>
-                    </ul>
+                    <h4 class="font-heading font-bold text-white text-sm mb-3">Shop Location</h4>
+                    <p class="text-xs text-slate-400 leading-relaxed">
+                        1279 Utica Ave<br>
+                        Brooklyn, NY 11203<br>
+                        Phone: (718) 451-0061
+                    </p>
                 </div>
 
-                <!-- Contact Info -->
                 <div>
-                    <h4 class="font-heading text-base font-bold text-white mb-4">Location &amp; Hours</h4>
-                    <div class="space-y-3 text-sm text-slate-400">
-                        <p><i class="fa-solid fa-location-dot text-brand-red mr-2"></i> 1279 Utica Ave, Brooklyn, NY 11203</p>
-                        <p><i class="fa-solid fa-phone text-brand-red mr-2"></i> (718) 451-0061</p>
-                        <p><i class="fa-regular fa-clock text-brand-red mr-2"></i> Mon-Fri: 8:00am – 6:00pm</p>
-                        <p><i class="fa-regular fa-clock text-brand-red mr-2"></i> Sat: 9:00am – 2:00pm</p>
-                    </div>
+                    <h4 class="font-heading font-bold text-white text-sm mb-3">Hours of Operation</h4>
+                    <p class="text-xs text-slate-400 leading-relaxed">
+                        Mon – Fri: 8:00 AM – 6:00 PM<br>
+                        Saturday: 9:00 AM – 2:00 PM<br>
+                        Sunday: Closed (24/7 Towing)
+                    </p>
                 </div>
-
             </div>
 
-            <div class="mt-12 pt-8 border-t border-slate-800 flex flex-col md:flex-row justify-between items-center text-xs text-slate-500 gap-4">
-                <div>
-                    &copy; 2026 ABC Collision. All Rights Reserved. 1279 Utica Ave, Brooklyn, NY 11203.
-                </div>
-                <div class="flex items-center gap-6">
-                    <a href="#" class="hover:text-slate-300">Privacy Policy</a>
-                    <a href="#" class="hover:text-slate-300">Terms of Service</a>
-                    <a href="#" class="hover:text-slate-300">Sitemap</a>
-                </div>
+            <div class="pt-6 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4 text-center sm:text-left">
+                <p>&copy; 2026 ABC Collision Center Brooklyn. All rights reserved.</p>
+                <p>1279 Utica Ave, Brooklyn, NY 11203 | Call (718) 451-0061</p>
             </div>
         </div>
     </footer>
 
-    <!-- STICKY MOBILE CALL / ESTIMATE BAR -->
-    <div class="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-white border-t border-slate-200 p-3 shadow-2xl flex items-center gap-2">
-        <a href="tel:7184510061" class="flex-1 py-3 bg-slate-900 text-white rounded-xl font-bold text-center text-xs flex items-center justify-center gap-2">
-            <i class="fa-solid fa-phone text-brand-red"></i> Call 718-451-0061
+    <!-- MOBILE STICKY BOTTOM ACTION BAR -->
+    <div class="fixed bottom-0 left-0 right-0 z-30 bg-slate-900 border-t border-slate-800 p-2.5 flex items-center gap-2 lg:hidden shadow-2xl">
+        <a href="tel:7184510061" class="flex-1 py-3 rounded-xl bg-brand-red text-white font-extrabold text-xs flex items-center justify-center gap-2 shadow-glow">
+            <i class="fa-solid fa-phone"></i> Call Shop (718) 451-0061
         </a>
-        <button onclick="openEstimateModal()" class="flex-1 py-3 bg-brand-red text-white rounded-xl font-bold text-center text-xs shadow-md">
-            Get Free Estimate
+        <button onclick="openEstimateModal()" class="flex-1 py-3 rounded-xl bg-slate-800 text-white font-extrabold text-xs flex items-center justify-center gap-2 border border-slate-700">
+            <i class="fa-solid fa-calculator text-brand-red"></i> Free Estimate
         </button>
     </div>
 
-    <!-- ESTIMATE POPUP MODAL -->
-    <div id="estimate-modal" class="modal opacity-0 invisible pointer-events-none fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/80 backdrop-blur-md">
-        <div class="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-8 relative shadow-2xl border border-slate-200 max-h-[90vh] overflow-y-auto">
-            
-            <button onclick="closeEstimateModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-700 w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center">
-                <i class="fa-solid fa-xmark text-lg"></i>
+    <!-- FREE ESTIMATE MULTI-STEP MODAL -->
+    <div id="estimate-modal" class="modal fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/80 backdrop-blur-sm">
+        <div class="bg-white rounded-2xl border border-slate-200 max-w-lg w-full p-6 shadow-2xl relative max-h-[90vh] overflow-y-auto">
+            <button onclick="closeEstimateModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-700 text-xl font-bold">
+                <i class="fa-solid fa-xmark"></i>
             </button>
 
-            <div class="space-y-2 mb-6">
-                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-100 text-brand-red text-xs font-bold uppercase">
-                    Free Written Estimate
+            <div class="text-center mb-6">
+                <div class="w-12 h-12 bg-red-100 text-brand-red rounded-2xl flex items-center justify-center mx-auto mb-2 text-xl font-bold">
+                    <i class="fa-solid fa-calculator"></i>
                 </div>
-                <h3 class="font-heading text-2xl font-extrabold text-slate-900">Get Your Free Estimate</h3>
-                <p class="text-xs text-slate-600">ABC Collision &bull; 1279 Utica Ave, Brooklyn, NY</p>
+                <h3 class="font-heading text-2xl font-extrabold text-slate-900">Get Free Repair Estimate</h3>
+                <p class="text-xs text-slate-500 mt-1">Provide your vehicle details for a fast guaranteed written quote.</p>
             </div>
 
-            <form onsubmit="handleModalSubmit(event)" class="space-y-4">
+            <form onsubmit="handleModalEstimateSubmit(event)" class="space-y-4">
                 <div>
-                    <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Your Name *</label>
-                    <input type="text" required placeholder="John Smith" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand-red">
+                    <label class="block text-xs font-bold text-slate-700 mb-1">Vehicle Year, Make & Model *</label>
+                    <input type="text" placeholder="e.g. 2022 Honda Civic Sedan" required class="w-full bg-slate-50 border border-slate-300 text-xs sm:text-sm rounded-xl px-3.5 py-2.5 focus:outline-none focus:ring-2 focus:ring-brand-red">
                 </div>
 
                 <div>
-                    <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Phone Number *</label>
-                    <input type="tel" required placeholder="(718) 451-0061" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand-red">
-                </div>
-
-                <div>
-                    <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Vehicle Year / Make / Model *</label>
-                    <input type="text" id="modal-vehicle-input" required placeholder="e.g. 2022 Toyota RAV4" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand-red">
-                </div>
-
-                <div>
-                    <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Service Required</label>
-                    <select id="modal-service-select" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand-red">
-                        <option>Collision Repair</option>
-                        <option>Auto Body & Panel Work</option>
-                        <option>Paint & Refinishing</option>
-                        <option>Dent & Scratch Removal</option>
-                        <option>Bumper Repair</option>
-                        <option>Frame Straightening</option>
-                        <option>Insurance Claim Assistance</option>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">Primary Area of Damage *</label>
+                    <select class="w-full bg-slate-50 border border-slate-300 text-xs sm:text-sm rounded-xl px-3.5 py-2.5 focus:outline-none focus:ring-2 focus:ring-brand-red font-medium">
+                        <option value="front-bumper">Front Bumper & Hood</option>
+                        <option value="rear-bumper">Rear Bumper & Trunk</option>
+                        <option value="side-doors">Side Doors & Fender</option>
+                        <option value="major-collision">Major Crash / Frame Damage</option>
+                        <option value="paint-scratch">Paint Scratches / Dents</option>
                     </select>
                 </div>
 
                 <div>
-                    <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Description of Damage</label>
-                    <textarea rows="3" placeholder="Briefly describe what needs repair..." class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand-red"></textarea>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">Insurance Involvement</label>
+                    <select class="w-full bg-slate-50 border border-slate-300 text-xs sm:text-sm rounded-xl px-3.5 py-2.5 focus:outline-none focus:ring-2 focus:ring-brand-red font-medium">
+                        <option value="yes">Filing through Insurance (GEICO, Progressive, State Farm, etc.)</option>
+                        <option value="no">Self-Pay / Out of Pocket</option>
+                        <option value="unsure">Need guidance filing claim</option>
+                    </select>
                 </div>
 
-                <button type="submit" class="w-full py-3.5 rounded-xl bg-brand-red hover:bg-brand-redhover text-white font-extrabold text-sm shadow-glow transition-all">
-                    Request Free Estimate Now
+                <div class="grid sm:grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 mb-1">Your Full Name *</label>
+                        <input type="text" placeholder="John Doe" required class="w-full bg-slate-50 border border-slate-300 text-xs sm:text-sm rounded-xl px-3.5 py-2.5 focus:outline-none focus:ring-2 focus:ring-brand-red">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 mb-1">Phone Number *</label>
+                        <input type="tel" placeholder="(718) 555-0199" required class="w-full bg-slate-50 border border-slate-300 text-xs sm:text-sm rounded-xl px-3.5 py-2.5 focus:outline-none focus:ring-2 focus:ring-brand-red">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">Notes / Description of Damage</label>
+                    <textarea placeholder="Describe how the damage occurred or special requests..." rows="3" class="w-full bg-slate-50 border border-slate-300 text-xs sm:text-sm rounded-xl px-3.5 py-2.5 focus:outline-none focus:ring-2 focus:ring-brand-red"></textarea>
+                </div>
+
+                <button type="submit" class="w-full py-3.5 bg-brand-red hover:bg-brand-redhover text-white font-extrabold rounded-xl text-sm transition-all shadow-glow">
+                    Submit Estimate Request
                 </button>
             </form>
         </div>
     </div>
 
-    <!-- JAVASCRIPT LOGIC -->
+    <!-- TRACKER SEARCH QUICK MODAL -->
+    <div id="tracker-modal" class="modal fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/80 backdrop-blur-sm">
+        <div class="bg-white rounded-2xl border border-slate-200 max-w-md w-full p-6 shadow-2xl relative">
+            <button onclick="closeTrackerModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-700 text-xl font-bold">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <div class="text-center mb-6">
+                <div class="w-12 h-12 bg-slate-100 text-brand-red rounded-2xl flex items-center justify-center mx-auto mb-2 text-xl font-bold">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </div>
+                <h3 class="font-heading text-xl font-extrabold text-slate-900">Check Vehicle Status</h3>
+                <p class="text-xs text-slate-500 mt-1">Enter your Tag ID (e.g. ABC-8821) or phone number.</p>
+            </div>
+
+            <div class="space-y-3">
+                <input type="text" id="modal-tracker-input" placeholder="Tag ID or Phone #" class="w-full bg-slate-50 border border-slate-300 text-sm rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-brand-red font-semibold">
+                <button onclick="runModalTrackerSearch()" class="w-full py-3 bg-slate-900 hover:bg-slate-800 text-white font-bold rounded-xl text-sm transition-all">
+                    Search Repair Status
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- SERVICE DETAIL MODAL -->
+    <div id="service-modal" class="modal fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/80 backdrop-blur-sm">
+        <div class="bg-white rounded-2xl border border-slate-200 max-w-md w-full p-6 shadow-2xl relative">
+            <button onclick="closeServiceModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-700 text-xl font-bold">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <div class="text-center mb-4">
+                <div id="service-modal-icon" class="w-12 h-12 bg-red-100 text-brand-red rounded-2xl flex items-center justify-center mx-auto mb-2 text-xl font-bold">
+                    <i class="fa-solid fa-car-burst"></i>
+                </div>
+                <h3 id="service-modal-title" class="font-heading text-xl font-extrabold text-slate-900">Collision Repair Details</h3>
+            </div>
+
+            <p id="service-modal-desc" class="text-xs sm:text-sm text-slate-600 leading-relaxed mb-6">
+                Comprehensive body & frame restoration services delivered to factory standards.
+            </p>
+
+            <div class="space-y-3">
+                <button onclick="closeServiceModal(); openEstimateModal();" class="w-full py-3 bg-brand-red hover:bg-brand-redhover text-white font-bold rounded-xl text-xs sm:text-sm shadow-md">
+                    Get Free Estimate For This Service
+                </button>
+                <a href="tel:7184510061" class="w-full py-3 bg-slate-100 hover:bg-slate-200 text-slate-900 font-bold rounded-xl text-xs sm:text-sm block text-center">
+                    <i class="fa-solid fa-phone text-brand-red mr-1"></i> Call Estimator (718) 451-0061
+                </a>
+            </div>
+        </div>
+    </div>
+
     <script>
-        // Before/After Drag Handle Interactive Implementation
-        function initBeforeAfterSlider() {
-            const container = document.getElementById('hero-ba-slider');
-            const resize = document.getElementById('hero-ba-resize');
-            const handle = document.getElementById('hero-ba-handle');
-            if (!container || !resize || !handle) return;
+        // Interactive Before/After Dragging Controls
+        const baContainer = document.getElementById('hero-ba-slider');
+        const baResize = document.getElementById('hero-ba-resize');
+        const baHandle = document.getElementById('hero-ba-handle');
+        let isDraggingBA = false;
 
-            let isDragging = false;
+        function setBAOffset(x) {
+            if (!baContainer) return;
+            const rect = baContainer.getBoundingClientRect();
+            let position = x - rect.left;
+            if (position < 0) position = 0;
+            if (position > rect.width) position = rect.width;
+            const percentage = (position / rect.width) * 100;
+            baResize.style.width = percentage + '%';
+            baHandle.style.left = percentage + '%';
+        }
 
-            function updateSliderPosition(x) {
-                const rect = container.getBoundingClientRect();
-                let position = x - rect.left;
-                if (position < 0) position = 0;
-                if (position > rect.width) position = rect.width;
-                const percentage = (position / rect.width) * 100;
-                resize.style.width = percentage + '%';
-                handle.style.left = percentage + '%';
-            }
-
-            container.addEventListener('mousedown', (e) => {
-                isDragging = true;
-                updateSliderPosition(e.clientX);
-            });
-
-            window.addEventListener('mouseup', () => {
-                isDragging = false;
+        if (baContainer) {
+            baContainer.addEventListener('mousedown', (e) => {
+                isDraggingBA = true;
+                setBAOffset(e.clientX);
             });
 
             window.addEventListener('mousemove', (e) => {
-                if (!isDragging) return;
-                updateSliderPosition(e.clientX);
+                if (!isDraggingBA) return;
+                setBAOffset(e.clientX);
+            });
+
+            window.addEventListener('mouseup', () => {
+                isDraggingBA = false;
             });
 
             // Touch events for mobile responsiveness
-            container.addEventListener('touchstart', (e) => {
-                isDragging = true;
-                if (e.touches[0]) updateSliderPosition(e.touches[0].clientX);
-            });
-
-            window.addEventListener('touchend', () => {
-                isDragging = false;
+            baContainer.addEventListener('touchstart', (e) => {
+                isDraggingBA = true;
+                if (e.touches[0]) setBAOffset(e.touches[0].clientX);
             });
 
             window.addEventListener('touchmove', (e) => {
-                if (!isDragging) return;
-                if (e.touches[0]) updateSliderPosition(e.touches[0].clientX);
+                if (!isDraggingBA) return;
+                if (e.touches[0]) setBAOffset(e.touches[0].clientX);
             });
+
+            window.addEventListener('touchend', () => {
+                isDraggingBA = false;
+            });
+        }
+
+        // Hero Case Switcher Logic
+        const heroCases = {
+            sedan: {
+                before: 'https://images.unsplash.com/photo-1599256621730-535171e28e50?auto=format&fit=crop&w=1200&q=80',
+                after: 'https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=1200&q=80'
+            },
+            suv: {
+                before: 'https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=1200&q=80',
+                after: 'https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1200&q=80'
+            },
+            paint: {
+                before: 'https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=1200&q=80',
+                after: 'https://images.unsplash.com/photo-1511919884226-fd3cad34687c?auto=format&fit=crop&w=1200&q=80'
+            }
+        };
+
+        function switchHeroCase(caseType) {
+            const caseData = heroCases[caseType];
+            if (!caseData) return;
+            document.getElementById('hero-img-before').src = caseData.before;
+            document.getElementById('hero-img-after').src = caseData.after;
+
+            document.querySelectorAll('.case-btn').forEach(btn => {
+                btn.className = 'case-btn px-2.5 py-1 text-xs font-bold rounded-lg bg-slate-100 text-slate-600 hover:bg-slate-200 transition-all';
+            });
+            const activeBtn = document.getElementById(`btn-case-${caseType}`);
+            if (activeBtn) {
+                activeBtn.className = 'case-btn px-2.5 py-1 text-xs font-bold rounded-lg bg-brand-red text-white transition-all';
+            }
         }
 
         function toggleMobileMenu() {
             const menu = document.getElementById('mobile-menu');
-            if (menu) {
-                menu.classList.toggle('hidden');
+            if (menu) menu.classList.toggle('hidden');
+        }
+
+        function calculateQuickEstimate() {
+            openEstimateModal();
+        }
+
+        function runTrackerSearch() {
+            const query = document.getElementById('tracker-search-input').value.trim();
+            if (!query) {
+                alert('Please enter a valid Tag or Phone number.');
+                return;
             }
+            loadSampleTracker(query);
+        }
+
+        function loadSampleTracker(tagId) {
+            const box = document.getElementById('tracker-result-box');
+            if (!box) return;
+            box.classList.remove('hidden');
+
+            const vehicleElem = document.getElementById('tracker-vehicle-name');
+            const claimElem = document.getElementById('tracker-claim-num');
+
+            if (tagId.toUpperCase().includes('4029')) {
+                vehicleElem.innerText = '2023 Audi Q5 Quattro';
+                claimElem.innerText = 'Claim ID: ABC-4029 • Insurance: State Farm';
+                document.getElementById('tracker-badge').innerText = 'Ready for Pickup';
+                document.getElementById('tracker-badge').className = 'bg-emerald-100 text-emerald-800 text-xs font-bold px-3 py-1 rounded-full uppercase';
+                document.getElementById('tracker-progress-bar').style.width = '100%';
+            } else {
+                vehicleElem.innerText = '2022 BMW 330i xDrive';
+                claimElem.innerText = `Claim ID: ${tagId.toUpperCase()} • Insurance: GEICO`;
+                document.getElementById('tracker-badge').innerText = 'In Progress (Paint Booth)';
+                document.getElementById('tracker-badge').className = 'bg-amber-100 text-amber-800 text-xs font-bold px-3 py-1 rounded-full uppercase';
+                document.getElementById('tracker-progress-bar').style.width = '60%';
+            }
+
+            box.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
         }
 
         function openEstimateModal() {
             const modal = document.getElementById('estimate-modal');
-            if (modal) {
-                modal.classList.add('modal-active');
-            }
+            if (modal) modal.classList.add('modal-active');
         }
 
         function closeEstimateModal() {
             const modal = document.getElementById('estimate-modal');
-            if (modal) {
-                modal.classList.remove('modal-active');
-            }
+            if (modal) modal.classList.remove('modal-active');
         }
 
-        function openServiceModal(serviceName) {
-            const modal = document.getElementById('estimate-modal');
-            const select = document.getElementById('modal-service-select');
-            if (select) {
-                for (let i = 0; i < select.options.length; i++) {
-                    if (select.options[i].text.includes(serviceName)) {
-                        select.selectedIndex = i;
-                        break;
-                    }
+        function openTrackerModal() {
+            const modal = document.getElementById('tracker-modal');
+            if (modal) modal.classList.add('modal-active');
+        }
+
+        function closeTrackerModal() {
+            const modal = document.getElementById('tracker-modal');
+            if (modal) modal.classList.remove('modal-active');
+        }
+
+        function runModalTrackerSearch() {
+            const val = document.getElementById('modal-tracker-input').value;
+            closeTrackerModal();
+            const trackerSection = document.getElementById('tracker');
+            if (trackerSection) trackerSection.scrollIntoView({ behavior: 'smooth' });
+            loadSampleTracker(val || 'ABC-8821');
+        }
+
+        function openServiceDetail(serviceType) {
+            const modal = document.getElementById('service-modal');
+            const title = document.getElementById('service-modal-title');
+            const desc = document.getElementById('service-modal-desc');
+
+            if (serviceType === 'collision') {
+                title.innerText = 'Collision & Crash Repair';
+                desc.innerText = 'Full structural bodywork, frame pulling, chassis blueprinting, and OEM body panel replacement for severe accident damage.';
+            } else if (serviceType === 'paint') {
+                title.innerText = 'Factory Paint Matching';
+                desc.innerText = 'PPG waterborne paint technology matched via spectrophotometer color camera and cured in Garmat downdraft heated booths.';
+            } else if (serviceType === 'frame') {
+                title.innerText = 'Laser Frame Straightening';
+                desc.innerText = 'Car-O-Liner laser measuring system restores bent frame rails and unibody geometry back to millimeter factory specifications.';
+            } else if (serviceType === 'bumper') {
+                title.innerText = 'Bumper Repair & Refinishing';
+                desc.innerText = 'Plastic welding, scuff removal, and sensor recalibration for front and rear bumper assemblies.';
+            } else if (serviceType === 'dent') {
+                title.innerText = 'Paintless Dent Removal (PDR)';
+                desc.innerText = 'Specialized tool techniques to mass-massage metal panels back to form without disturbing original factory clear coat.';
+            } else if (serviceType === 'insurance') {
+                title.innerText = 'Insurance Claim Advocacy';
+                desc.innerText = 'Direct electronic billing, adjuster negotiations, supplemental approvals, and rental vehicle coordination.';
+            }
+
+            if (modal) modal.classList.add('modal-active');
+        }
+
+        function closeServiceModal() {
+            const modal = document.getElementById('service-modal');
+            if (modal) modal.classList.remove('modal-active');
+        }
+
+        function filterGallery(category) {
+            document.querySelectorAll('.gallery-tab').forEach(tab => {
+                tab.className = 'gallery-tab px-4 py-2 rounded-xl text-xs font-bold bg-slate-100 text-slate-700 hover:bg-slate-200 transition-all';
+            });
+            const activeTab = document.getElementById(`tab-${category}`);
+            if (activeTab) activeTab.className = 'gallery-tab px-4 py-2 rounded-xl text-xs font-bold bg-brand-red text-white transition-all shadow-sm';
+
+            document.querySelectorAll('.gallery-card').forEach(card => {
+                if (category === 'all' || card.classList.contains(`gallery-${category}`)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
                 }
+            });
+        }
+
+        function toggleFaq(faqId) {
+            const elem = document.getElementById(faqId);
+            const icon = document.getElementById(`icon-${faqId}`);
+            if (elem) {
+                elem.classList.toggle('hidden');
+                if (icon) icon.classList.toggle('rotate-180');
             }
-            openEstimateModal();
         }
 
-        function handleQuickEstimate() {
-            const damageType = document.getElementById('quick-damage-type').value;
-            openServiceModal(damageType);
-        }
-
-        function handleFormSubmit(event) {
+        function handleContactSubmit(event) {
             event.preventDefault();
-            document.getElementById('contact-form').classList.add('hidden');
-            document.getElementById('form-success').classList.remove('hidden');
+            alert('Thank you for contacting ABC Collision! An estimator will review your message and call you back shortly at (718) 451-0061.');
+            event.target.reset();
         }
 
-        function handleModalSubmit(event) {
+        function handleModalEstimateSubmit(event) {
             event.preventDefault();
-            alert("Thank you! Your estimate request has been received. Steve or Ali from ABC Collision will contact you shortly.");
             closeEstimateModal();
+            alert('Your free estimate request has been submitted to ABC Collision! A specialist will contact you within 15 minutes.');
+            event.target.reset();
         }
-
-        // Run on DOM load
-        window.onload = function() {
-            initBeforeAfterSlider();
-        };
     </script>
 </body>
 </html>
